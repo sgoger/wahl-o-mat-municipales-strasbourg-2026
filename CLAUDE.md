@@ -29,6 +29,10 @@ Exception: `.claude/` files (memory, settings, hooks) may be edited on any branc
 open index.html              # Open in browser (macOS)
 python3 -m http.server 8000  # Local dev server (for module imports)
 
+# Testing
+npm test                     # Run all tests once
+npm run test:watch           # Run tests in watch mode
+
 # Git workflow
 git status                   # Check working tree
 git diff                     # Review changes
@@ -51,7 +55,8 @@ wahl-o-mat/
 │   │   ├── 00-code-style.md ← HTML/CSS/JS coding standards
 │   │   ├── 01-security.md   ← Web security rules
 │   │   ├── 02-git-workflow.md ← Git branch & commit conventions
-│   │   └── 03-privacy.md   ← No personal paths in committed files
+│   │   ├── 03-privacy.md   ← No personal paths in committed files
+│   │   └── 04-testing.md   ← Testing requirements for every feature
 │   ├── hooks/
 │   │   ├── enforce-branch.sh ← Block edits on main branch
 │   │   └── remind-git-workflow.sh ← Remind to commit/push/PR
@@ -59,6 +64,17 @@ wahl-o-mat/
 │       ├── new-feature.md   ← /new-feature: issue + branch setup
 │       ├── pr.md            ← /pr: create pull request
 │       └── security-check.md ← /security-check: audit codebase
+├── tests/
+│   ├── helpers/
+│   │   └── load-app.js      ← Test helper: loads index.html script
+│   ├── smoke.test.js        ← Setup validation
+│   ├── data-integrity.test.js ← Data structure & source verification
+│   ├── scoring.test.js      ← Score calculation tests
+│   ├── ranking.test.js      ← Ranking order tests
+│   ├── detail.test.js       ← Source display in results tests
+│   └── comparison.test.js   ← Comparison table tests
+├── package.json             ← Dev dependencies (Vitest, happy-dom)
+├── vitest.config.js         ← Test runner configuration
 └── .gitignore
 ```
 
