@@ -8,7 +8,7 @@ Outil citoyen d'aide à la décision pour les élections municipales de Strasbou
 
 ## À propos
 
-Ce Wahl-O-Mat compare vos positions à celles des 6 principaux candidats à la mairie de Strasbourg sur 23 thèses issues des grands enjeux de la campagne : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme et social.
+Ce Wahl-O-Mat compare vos positions à celles des 6 principaux candidats à la mairie de Strasbourg sur 33 thèses issues des grands enjeux de la campagne : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme, social, urbanisme et économie.
 
 **Ce que cet outil est :**
 - Un aide-mémoire pédagogique sur les programmes
@@ -60,13 +60,13 @@ L'utilisation de l'IA ne garantit pas l'absence d'erreurs. Elle peut introduire 
 
 ### Choix des candidats
 
-Strasbourg compte 10 listes officiellement déposées. Seuls 6 candidats figurent dans cet outil, pour une raison unique : ce sont les seuls dont il a été possible de documenter des positions **suffisamment précises et vérifiables** sur chacune des 23 thèses. Ce critère est purement méthodologique et ne reflète aucun jugement sur la valeur des candidatures absentes.
+Strasbourg compte 10 listes officiellement déposées. Seuls 6 candidats figurent dans cet outil, pour une raison unique : ce sont les seuls dont il a été possible de documenter des positions **suffisamment précises et vérifiables** sur chacune des 33 thèses. Ce critère est purement méthodologique et ne reflète aucun jugement sur la valeur des candidatures absentes.
 
 Les candidats absents et les raisons de leur absence sont expliqués dans l'outil lui-même.
 
 ### Choix des thèses
 
-Les 23 thèses ont été sélectionnées à partir des sujets les plus présents dans la couverture de campagne par la presse locale (Rue89 Strasbourg, Pokaa, StrasInfo, Vert.eco, France Bleu, France 3, CNews). Elles couvrent 8 thèmes : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme, social.
+Les 33 thèses ont été sélectionnées à partir des sujets les plus présents dans la couverture de campagne par la presse locale (Rue89 Strasbourg, Pokaa, StrasInfo, Vert.eco, France Bleu, France 3, CNews). Elles couvrent 10 thèmes : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme, social, urbanisme et économie.
 
 Tout choix de thèses implique un cadrage. Certains sujets sont absents faute de sources permettant d'attribuer des positions claires à tous les candidats. Ce biais de documentation est inhérent à l'exercice.
 
