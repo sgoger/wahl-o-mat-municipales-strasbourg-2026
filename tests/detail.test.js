@@ -115,6 +115,39 @@ describe('buildDetailHTML', () => {
   });
 
   // -----------------------------------------------------------
+  // Dual stance display (user vs candidate)
+  // -----------------------------------------------------------
+  describe('dual stance display', () => {
+    test('shows "Vous" label for user answer', () => {
+      app.userAnswers.T1 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).toContain('Vous');
+    });
+
+    test('shows candidate last name as label', () => {
+      app.userAnswers.T1 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).toContain('Barseghian');
+    });
+
+    test('shows user stance badge with correct class', () => {
+      app.userAnswers.T1 = { vote: 'disagree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).toContain('pos-disagree');
+      expect(html).toContain("Pas d'accord");
+    });
+
+    test('shows both user and candidate stances when they differ', () => {
+      // barseghian T1 = agree, user votes disagree
+      app.userAnswers.T1 = { vote: 'disagree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      // User badge: "Pas d'accord", Candidate badge: "D'accord"
+      expect(html).toContain("Pas d'accord");
+      expect(html).toContain("D'accord");
+    });
+  });
+
+  // -----------------------------------------------------------
   // Filtering
   // -----------------------------------------------------------
   describe('filtering', () => {
