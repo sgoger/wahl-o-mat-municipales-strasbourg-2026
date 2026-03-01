@@ -685,9 +685,9 @@
   <div class="header-inner">
     <div class="header-eyebrow">🗳 Élections Municipales · 15 & 22 Mars 2026</div>
     <h1 class="header-title">Wahl-O-Mat<br><em>Strasbourg</em></h1>
-    <p class="header-sub">Découvrez quel candidat à la mairie de Strasbourg est le plus proche de vos convictions sur 23 thèses clés de la campagne.</p>
+    <p class="header-sub">Découvrez quel candidat à la mairie de Strasbourg est le plus proche de vos convictions sur 33 thèses clés de la campagne.</p>
     <div class="header-meta">
-      <span class="header-badge">23 thèses</span>
+      <span class="header-badge">33 thèses</span>
       <span class="header-badge">6 candidats</span>
       <span class="header-badge">Sources vérifiées</span>
     </div>
@@ -700,12 +700,12 @@
   <div id="screen-intro">
     <div class="intro-card">
       <h2>Comment ça marche ?</h2>
-      <p>Cet outil compare vos positions à celles des 6 principaux candidats aux élections municipales de Strasbourg sur des sujets concrets : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme et social.</p>
+      <p>Cet outil compare vos positions à celles des 6 principaux candidats aux élections municipales de Strasbourg sur des sujets concrets : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme, social, urbanisme et économie.</p>
       <p>Pour chaque thèse, répondez librement. Le résultat vous indique avec quel candidat vous avez le plus de points communs — sans être une recommandation de vote.</p>
       <div class="intro-steps">
         <div class="intro-step">
           <div class="step-num">1</div>
-          <p>Répondez à 23 questions par D'accord, Neutre ou Pas d'accord</p>
+          <p>Répondez à 33 questions par D'accord, Neutre ou Pas d'accord</p>
         </div>
         <div class="intro-step">
           <div class="step-num">2</div>
@@ -738,7 +738,7 @@
           Le programme, co-construit via des cahiers de doléances, structure ses priorités autour de 12 axes thématiques (emploi des jeunes, finances, gouvernance participative, logement…)
           <a href="https://www.rue89strasbourg.com/programme-mohamed-sylla-strasbourg-378831" target="_blank" style="font-size:0.78rem;color:#888;">[Rue89 Strasbourg, jan. 2026]</a>
           <a href="https://pokaa.fr/2025/11/17/municipales-2026-en-exclu-le-parti-utiles-67-devoile-12-mesures-pour-strasbourg/" target="_blank" style="font-size:0.78rem;color:#888;">[Pokaa, nov. 2025]</a>.
-          Ces axes ne permettent pas d'attribuer des positions tranchées sur la majorité des 23 thèses de cet outil (ex. taux de bio en cantine, gratuité de l'eau, encadrement des loyers, police municipale…) : le programme reste au niveau d'orientations générales plutôt que d'engagements chiffrés comparables aux autres candidat·es.
+          Ces axes ne permettent pas d'attribuer des positions tranchées sur la majorité des 33 thèses de cet outil (ex. taux de bio en cantine, gratuité de l'eau, encadrement des loyers, police municipale…) : le programme reste au niveau d'orientations générales plutôt que d'engagements chiffrés comparables aux autres candidat·es.
         </li>
         <li>
           <strong>Louise Fève</strong> (Lutte Ouvrière) —
@@ -889,7 +889,7 @@ const CANDIDATES = [
 ];
 
 const THESES = [
-  // MOBILITY
+  // MOBILITÉ
   {
     id: 'T1', category: '🚋 Mobilité', label: 'Thèse 1',
     text: 'La ville doit étendre le réseau de tramway vers le nord (Schiltigheim/Bischheim) dans le prochain mandat.',
@@ -930,9 +930,17 @@ const THESES = [
       { title: 'Candidats et leurs programmes mobilité — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
-  // HOUSING
   {
-    id: 'T6', category: '🏠 Logement', label: 'Thèse 6',
+    id: 'T6', category: '🚋 Mobilité', label: 'Thèse 6',
+    text: 'Les panneaux publicitaires doivent être interdits ou fortement réduits dans l\'espace public.',
+    docs: [
+      { title: 'Kobryn : programme LFI — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805' },
+      { title: 'Mesures écologie des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/11/ecologie-a-strasbourg-quelles-sont-les-mesures-des-candidates-aux-municipales-2026/' }
+    ]
+  },
+  // LOGEMENT
+  {
+    id: 'T7', category: '🏠 Logement', label: 'Thèse 7',
     text: 'La ville doit mettre en place l\'encadrement des loyers sur l\'ensemble de son territoire.',
     docs: [
       { title: 'Encadrement des loyers à Strasbourg : ce que ça changerait — StrasInfo', url: 'https://strasinfo.fr/2026/02/18/loyers-a-strasbourg-vous-allez-enfin-payer-moins-cher/' },
@@ -941,7 +949,7 @@ const THESES = [
     ]
   },
   {
-    id: 'T7', category: '🏠 Logement', label: 'Thèse 7',
+    id: 'T8', category: '🏠 Logement', label: 'Thèse 8',
     text: 'La ville doit renforcer la réglementation sur les meublés touristiques de type Airbnb pour libérer des logements.',
     docs: [
       { title: 'Airbnb et logement : enjeux à Strasbourg — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' },
@@ -949,15 +957,23 @@ const THESES = [
     ]
   },
   {
-    id: 'T8', category: '🏠 Logement', label: 'Thèse 8',
+    id: 'T9', category: '🏠 Logement', label: 'Thèse 9',
     text: 'La ville doit avoir la capacité de réquisitionner des logements vacants.',
     docs: [
       { title: 'Logements vacants et réquisition en France : contexte juridique — Wikipedia', url: 'https://fr.wikipedia.org/wiki/%C3%89lections_municipales_de_2026_%C3%A0_Strasbourg' }
     ]
   },
-  // SECURITY
   {
-    id: 'T9', category: '🔒 Sécurité', label: 'Thèse 9',
+    id: 'T10', category: '🏠 Logement', label: 'Thèse 10',
+    text: 'La ville doit construire au moins 3 000 logements sociaux supplémentaires par mandat.',
+    docs: [
+      { title: 'Logement, enjeu de la campagne 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Loyers à Strasbourg : ce que ça changerait — StrasInfo', url: 'https://strasinfo.fr/2026/02/18/loyers-a-strasbourg-vous-allez-enfin-payer-moins-cher/' }
+    ]
+  },
+  // SÉCURITÉ
+  {
+    id: 'T11', category: '🔒 Sécurité', label: 'Thèse 11',
     text: 'Les effectifs de la police municipale doivent être significativement augmentés.',
     docs: [
       { title: 'Sécurité : enjeu central des municipales 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
@@ -965,7 +981,7 @@ const THESES = [
     ]
   },
   {
-    id: 'T10', category: '🔒 Sécurité', label: 'Thèse 10',
+    id: 'T12', category: '🔒 Sécurité', label: 'Thèse 12',
     text: 'L\'arrêté anti-mendicité abrogé en 2020 doit être rétabli.',
     docs: [
       { title: 'Contexte : pourquoi Barseghian a abrogé l\'arrêté en 2020 — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/la-maire-de-strasbourg-annule-larrete-anti-mendicite-184485' },
@@ -974,15 +990,31 @@ const THESES = [
     ]
   },
   {
-    id: 'T11', category: '🔒 Sécurité', label: 'Thèse 11',
+    id: 'T13', category: '🔒 Sécurité', label: 'Thèse 13',
     text: 'La lutte contre les incivilités doit reposer principalement sur des sanctions renforcées plutôt que sur la prévention.',
     docs: [
       { title: 'Propreté et incivilités dans la campagne 2026 — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
+  {
+    id: 'T14', category: '🔒 Sécurité', label: 'Thèse 14',
+    text: 'La ville doit étendre significativement son réseau de vidéosurveillance (actuellement 143 caméras).',
+    docs: [
+      { title: 'Sécurité : programmes des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/01/securite-a-strasbourg-quels-programmes-ont-les-candidates-aux-municipales-2026/' },
+      { title: 'Sécurité : enjeu central des municipales 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' }
+    ]
+  },
+  {
+    id: 'T15', category: '🔒 Sécurité', label: 'Thèse 15',
+    text: 'L\'éclairage public doit être rétabli la nuit dans toutes les rues de Strasbourg.',
+    docs: [
+      { title: 'Sécurité : programmes des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/01/securite-a-strasbourg-quels-programmes-ont-les-candidates-aux-municipales-2026/' },
+      { title: 'Jakubowicz : rallumer la lumière dans toutes les rues — pierrejakubowicz.eu', url: 'https://pierrejakubowicz.eu/post_idea/rallumer-la-lumiere-dans-lensemble-des-rues-de-strasbourg/' }
+    ]
+  },
   // FINANCES
   {
-    id: 'T12', category: '💰 Finances', label: 'Thèse 12',
+    id: 'T16', category: '💰 Finances', label: 'Thèse 16',
     text: 'La ville doit mener un audit indépendant de ses finances et réduire sa dette sans augmenter les impôts.',
     docs: [
       { title: 'Finances de Strasbourg : enjeux du mandat — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
@@ -990,15 +1022,15 @@ const THESES = [
     ]
   },
   {
-    id: 'T13', category: '💰 Finances', label: 'Thèse 13',
+    id: 'T17', category: '💰 Finances', label: 'Thèse 17',
     text: 'La taxe foncière ne doit pas augmenter durant le prochain mandat.',
     docs: [
       { title: 'Taxe foncière et finances municipales — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
     ]
   },
-  // ECOLOGY
+  // ÉCOLOGIE
   {
-    id: 'T14', category: '🌿 Écologie', label: 'Thèse 14',
+    id: 'T18', category: '🌿 Écologie', label: 'Thèse 18',
     text: 'La transition écologique doit rester un axe prioritaire de la politique municipale.',
     docs: [
       { title: 'Bilan écologique du mandat Barseghian — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
@@ -1006,46 +1038,63 @@ const THESES = [
     ]
   },
   {
-    id: 'T15', category: '🌿 Écologie', label: 'Thèse 15',
+    id: 'T19', category: '🌿 Écologie', label: 'Thèse 19',
     text: 'La ville doit viser 75% de produits bio et locaux dans les cantines scolaires.',
     docs: [
       { title: 'Alimentation et cantines dans la campagne — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
   {
-    id: 'T16', category: '🌿 Écologie', label: 'Thèse 16',
+    id: 'T20', category: '🌿 Écologie', label: 'Thèse 20',
     text: 'Les 30 premiers mètres cubes d\'eau annuels doivent être gratuits pour chaque foyer.',
     docs: [
       { title: 'Eau gratuite : comment ça fonctionne ? (exemples Dunkerque, Grenoble) — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
       { title: 'Propositions eau et écologie des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
-  // DEMOCRACY
   {
-    id: 'T17', category: '🏛 Démocratie', label: 'Thèse 17',
+    id: 'T21', category: '🌿 Écologie', label: 'Thèse 21',
+    text: 'Strasbourg doit atteindre 30 % de couverture arborée d\'ici 2030 (règle 3-30-300).',
+    docs: [
+      { title: 'Plan Canopée et végétalisation — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928' },
+      { title: 'Trautmann : objectifs 3-30-300 arbres — France Bleu', url: 'https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466' },
+      { title: 'Mesures écologie des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/11/ecologie-a-strasbourg-quelles-sont-les-mesures-des-candidates-aux-municipales-2026/' }
+    ]
+  },
+  // DÉMOCRATIE
+  {
+    id: 'T22', category: '🗳️ Démocratie', label: 'Thèse 22',
     text: 'Les élus de quartier doivent disposer d\'un budget propre et de délégations renforcées.',
     docs: [
       { title: 'Démocratie participative : bilan du mandat et propositions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
     ]
   },
   {
-    id: 'T18', category: '🏛 Démocratie', label: 'Thèse 18',
+    id: 'T23', category: '🗳️ Démocratie', label: 'Thèse 23',
     text: 'Les citoyens doivent pouvoir déclencher un référendum municipal par voie de pétition.',
     docs: [
       { title: 'Démocratie locale et référendum : propositions des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
     ]
   },
   {
-    id: 'T19', category: '🏛 Démocratie', label: 'Thèse 19',
+    id: 'T24', category: '🗳️ Démocratie', label: 'Thèse 24',
     text: 'Les habitants non-français doivent pouvoir participer aux consultations citoyennes locales.',
     docs: [
       { title: 'Droit de vote des étrangers en France : état du débat — Wikipedia', url: 'https://fr.wikipedia.org/wiki/Droit_de_vote_des_%C3%A9trangers_en_France' },
       { title: 'Participation citoyenne et résidents étrangers : ce que proposent les candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
-  // TOURISM
   {
-    id: 'T20', category: '🌍 Tourisme', label: 'Thèse 20',
+    id: 'T25', category: '🗳️ Démocratie', label: 'Thèse 25',
+    text: 'La ville doit créer des mairies de quartier dotées de services propres et d\'horaires élargis.',
+    docs: [
+      { title: 'Jakubowicz : décentralisation des services — pierrejakubowicz.eu', url: 'https://pierrejakubowicz.eu/post_idea/creer-10-mairies-de-quartier/' },
+      { title: 'Candidats et démocratie locale — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  // TOURISME
+  {
+    id: 'T26', category: '🌍 Tourisme', label: 'Thèse 26',
     text: 'La ville doit mieux réguler le tourisme de masse pour préserver la qualité de vie des habitants.',
     docs: [
       { title: 'Marché de Noël et tourisme à Strasbourg : enjeux — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' },
@@ -1053,15 +1102,41 @@ const THESES = [
     ]
   },
   {
-    id: 'T21', category: '🌍 Tourisme', label: 'Thèse 21',
+    id: 'T27', category: '🌍 Tourisme', label: 'Thèse 27',
     text: 'Strasbourg doit renforcer son rôle de capitale européenne avec des événements dédiés.',
     docs: [
       { title: 'Strasbourg capitale européenne : enjeux et ambitions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
     ]
   },
+  // URBANISME
+  {
+    id: 'T28', category: '🏗️ Urbanisme', label: 'Thèse 28',
+    text: 'Le projet de transformation de la gare (« Gare à 360° ») doit être une priorité du prochain mandat.',
+    docs: [
+      { title: 'Barseghian : grands projets du mandat — StrasInfo', url: 'https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/' },
+      { title: 'Candidats et grands projets — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  // ÉCONOMIE
+  {
+    id: 'T29', category: '💼 Économie', label: 'Thèse 29',
+    text: 'La ville doit créer un guichet unique pour simplifier les démarches des entreprises et commerces.',
+    docs: [
+      { title: 'Jakubowicz : programme économique — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' },
+      { title: 'Vetter veut tout changer — StrasInfo', url: 'https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer' }
+    ]
+  },
+  {
+    id: 'T30', category: '💼 Économie', label: 'Thèse 30',
+    text: 'Les fournitures scolaires doivent être gratuites pour tous les élèves du primaire.',
+    docs: [
+      { title: 'Trautmann : programme sport, culture, démocratie — France Bleu', url: 'https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466' },
+      { title: 'Pouvoir d\'achat : propositions des candidats — Pokaa', url: 'https://pokaa.fr/2026/01/25/pouvoir-dachat-que-feront-les-candidats-aux-elections-municipales-2026-de-strasbourg/' }
+    ]
+  },
   // SOCIAL
   {
-    id: 'T22', category: '⚖️ Social', label: 'Thèse 22',
+    id: 'T31', category: '⚖️ Social', label: 'Thèse 31',
     text: 'La ville doit créer une mutuelle communale pour faciliter l\'accès aux soins.',
     docs: [
       { title: 'Mutuelles communales : comment ça fonctionne ? (exemples français) — Pokaa', url: 'https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/' },
@@ -1069,10 +1144,18 @@ const THESES = [
     ]
   },
   {
-    id: 'T23', category: '⚖️ Social', label: 'Thèse 23',
+    id: 'T32', category: '⚖️ Social', label: 'Thèse 32',
     text: 'Un revenu minimum mensuel doit être expérimenté pour les jeunes sans ressources.',
     docs: [
       { title: 'Propositions sociales pour les jeunes — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  {
+    id: 'T33', category: '⚖️ Social', label: 'Thèse 33',
+    text: 'La ville doit mettre en place un plan d\'urgence contre la précarité étudiante (épiceries solidaires, logements dédiés).',
+    docs: [
+      { title: 'Précarité étudiante : propositions des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/15/precarite-etudiante-a-strasbourg-que-prevoient-les-candidates-aux-municipales-2026/' },
+      { title: 'Propositions solidaires de Barseghian — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/solidarite-jeanne-barseghian-municipales-2026-strasbourg-381334' }
     ]
   }
 ];
@@ -1086,24 +1169,34 @@ const POSITIONS = {
     T3:  { stance: 'agree',    excerpt: "Plus de place pour le vélo, les piétons et la végétation sur les grandes artères", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
     T4:  { stance: 'agree',    excerpt: "Stationnement résident à partir de 5€/mois avec tranches progressives", url: "https://pokaa.fr/2026/01/07/municipales-2026-jeanne-barseghian-devoile-12-mesures" },
     T5:  { stance: 'agree',    excerpt: "Réseau de bus étendu fonctionnant 24h/24 et 7j/7", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers sur toute la ville, dès que possible + brigade municipale du logement", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T7:  { stance: 'agree',    excerpt: "Régulation des meublés de tourisme type Airbnb", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T8:  { stance: 'neutral',    excerpt: "Dispositif \"Mieux relouer mon logement vacant\" (260 logements captés) mais pas de réquisition explicite", url: "https://www.rue89strasbourg.com/strasbourg-logements-vides-vacants-159699" },
-    T9:  { stance: 'disagree', excerpt: "Pas de doublement des effectifs annoncé ; priorité à la prévention", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T10: { stance: 'disagree', excerpt: "La maire sortante a abrogé l'arrêté anti-mendicité en 2020 ; pas de retour annoncé", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
-    T11: { stance: 'disagree', excerpt: "Approche fondée sur la prévention et la politique sociale plutôt que les sanctions", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T12: { stance: 'disagree', excerpt: "Pas d'audit proposé ; défend le bilan financier du mandat écologiste", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T13: { stance: 'neutral',    excerpt: "Pas d'engagement explicite de gel de la taxe foncière dans le programme", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T14: { stance: 'agree',    excerpt: "La transition écologique est le fil conducteur de tout le programme", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
-    T15: { stance: 'agree',    excerpt: "75% de produits bio, locaux et de saison dans les assiettes des écoliers + cuisines centrales municipales", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T16: { stance: 'agree',    excerpt: "30 premiers mètres cubes d'eau gratuits pour tous les foyers + tarification progressive", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T17: { stance: 'agree',    excerpt: "Élus de quartier avec budget dédié, droit d'interpellation citoyen, conseils d'urbanisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T18: { stance: 'agree',    excerpt: "Pétitions pouvant déclencher des référendums, ouverts aux résidents étrangers et aux plus de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T19: { stance: 'agree',    excerpt: "Référendums ouverts aux résidents étrangers et aux jeunes de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T20: { stance: 'agree',    excerpt: "Régulation des meublés de tourisme Airbnb pour préserver le parc de logements", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T21: { stance: 'agree',    excerpt: "Festival estival \"L'été à Strasbourg\" de juin à septembre, rénovation Opéra national du Rhin", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T22: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour offrir une couverture complémentaire à prix abordable", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
-    T23: { stance: 'agree',    excerpt: "Revenu pour les jeunes parmi les dispositifs de gratuité et tarification solidaire annoncés", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" }
+    T7:  { stance: 'agree',    excerpt: "Encadrement des loyers sur toute la ville, dès que possible + brigade municipale du logement", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T8:  { stance: 'agree',    excerpt: "Régulation des meublés de tourisme type Airbnb", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T9:  { stance: 'neutral',    excerpt: "Dispositif \"Mieux relouer mon logement vacant\" (260 logements captés) mais pas de réquisition explicite", url: "https://www.rue89strasbourg.com/strasbourg-logements-vides-vacants-159699" },
+    T11:  { stance: 'disagree', excerpt: "Pas de doublement des effectifs annoncé ; priorité à la prévention", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T12: { stance: 'disagree', excerpt: "La maire sortante a abrogé l'arrêté anti-mendicité en 2020 ; pas de retour annoncé", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T13: { stance: 'disagree', excerpt: "Approche fondée sur la prévention et la politique sociale plutôt que les sanctions", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T16: { stance: 'disagree', excerpt: "Pas d'audit proposé ; défend le bilan financier du mandat écologiste", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T17: { stance: 'neutral',    excerpt: "Pas d'engagement explicite de gel de la taxe foncière dans le programme", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T18: { stance: 'agree',    excerpt: "La transition écologique est le fil conducteur de tout le programme", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
+    T19: { stance: 'agree',    excerpt: "75% de produits bio, locaux et de saison dans les assiettes des écoliers + cuisines centrales municipales", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T20: { stance: 'agree',    excerpt: "30 premiers mètres cubes d'eau gratuits pour tous les foyers + tarification progressive", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T22: { stance: 'agree',    excerpt: "Élus de quartier avec budget dédié, droit d'interpellation citoyen, conseils d'urbanisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T23: { stance: 'agree',    excerpt: "Pétitions pouvant déclencher des référendums, ouverts aux résidents étrangers et aux plus de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T24: { stance: 'agree',    excerpt: "Référendums ouverts aux résidents étrangers et aux jeunes de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T26: { stance: 'agree',    excerpt: "Régulation des meublés de tourisme Airbnb pour préserver le parc de logements", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T27: { stance: 'agree',    excerpt: "Festival estival \"L'été à Strasbourg\" de juin à septembre, rénovation Opéra national du Rhin", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T31: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour offrir une couverture complémentaire à prix abordable", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T32: { stance: 'agree',    excerpt: "Revenu pour les jeunes parmi les dispositifs de gratuité et tarification solidaire annoncés", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T14: { stance: 'disagree', excerpt: "Approche fondée sur la prévention et la médiation plutôt que la vidéosurveillance massive", url: "https://pokaa.fr/2026/02/01/securite-a-strasbourg-quels-programmes-ont-les-candidates-aux-municipales-2026/" },
+    T15: { stance: 'disagree', excerpt: "Extinction partielle maintenue pour la biodiversité et les économies d'énergie ; éclairage intelligent ciblé", url: "https://pokaa.fr/2026/02/01/securite-a-strasbourg-quels-programmes-ont-les-candidates-aux-municipales-2026/" },
+    T10: { stance: 'agree',    excerpt: "Objectif ambitieux de construction de logements sociaux et très sociaux sur le mandat", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T21: { stance: 'agree',    excerpt: "5 500 arbres plantés via le plan Canopée ; objectif 30% de couverture arborée d'ici 2030, corridors de fraîcheur", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
+    T28: { stance: 'agree',    excerpt: "Projet Gare à 360° porté activement : transformation complète du quartier gare pour le prochain mandat", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T29: { stance: 'neutral',  excerpt: "Priorité à l'économie sociale et solidaire plutôt qu'au guichet unique pour entreprises classiques", url: "https://pokaa.fr/2026/02/24/municipales-2026-entre-emploi-et-ecologie-jeanne-barseghian-devoile-ses-mesures/" },
+    T30: { stance: 'neutral',  excerpt: "Priorité à la gratuité des cantines bio et de l'eau plutôt qu'aux fournitures scolaires", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T25: { stance: 'agree',    excerpt: "Élus de quartier avec budget dédié et droit d'interpellation citoyen dans chaque quartier", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T6: { stance: 'agree',    excerpt: "Réduction de la publicité dans l'espace public engagée durant le mandat ; poursuite annoncée", url: "https://pokaa.fr/2026/02/11/ecologie-a-strasbourg-quelles-sont-les-mesures-des-candidates-aux-municipales-2026/" },
+    T33: { stance: 'agree',    excerpt: "Plan de solidarité incluant épiceries solidaires, logements étudiants et tarification sociale étendue", url: "https://www.rue89strasbourg.com/solidarite-jeanne-barseghian-municipales-2026-strasbourg-381334" }
   },
   trautmann: {
     T1:  { stance: 'agree',    excerpt: "Réaliser le projet du Tram Nord, vers Schiltigheim et Bischheim", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
@@ -1111,24 +1204,34 @@ const POSITIONS = {
     T3:  { stance: 'neutral',    excerpt: "Veut \"rééquilibrer\" sans supprimer la voiture ; critique les aménagements actuels trop radicaux", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
     T4:  { stance: 'agree',    excerpt: "Baisse du stationnement résident entre 5€ et 20€/mois selon zones et quotient familial + gratuité des 30 premières minutes", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
     T5:  { stance: 'neutral',    excerpt: "Pas de position explicite sur le 24h/24 ; amélioration des fréquences annoncée", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
-    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers figurait dans son programme 2022 et est réaffirmé", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T7:  { stance: 'neutral',    excerpt: "Position non explicitement détaillée sur Airbnb dans les sources disponibles", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
-    T8:  { stance: 'neutral',    excerpt: "Pas de réquisition explicite dans les sources ; politique de remise sur marché favorisée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
-    T9:  { stance: 'agree',    excerpt: "Renforcer la présence de la police municipale sur le terrain avec des patrouilles régulières + brigade dédiée aux transports", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
-    T10: { stance: 'disagree', excerpt: "Pas de proposition de rétablissement de l'arrêté anti-mendicité dans son programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T11: { stance: 'neutral',    excerpt: "Aborde la sécurité par la présence policière ET les politiques de prévention sociale", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
-    T12: { stance: 'agree',    excerpt: "Audit financier des finances de la ville annoncé dès l'annonce de candidature", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
-    T13: { stance: 'neutral',    excerpt: "Promet de ne pas \"charger la fiscalité\" mais sans engagement ferme de gel de la taxe foncière", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
-    T14: { stance: 'agree',    excerpt: "Trajectoire zéro carbone à l'horizon 2050, objectifs 3-30-300 arbres (3 arbres visibles, 30% couverture, espace vert \u003c300m)", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
-    T15: { stance: 'neutral',    excerpt: "Gratuité des fournitures scolaires annoncée, mais objectif bio/local des cantines non chiffré", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T16: { stance: 'agree',    excerpt: "Gratuité des 15 premiers m3 d'eau proposée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
-    T17: { stance: 'agree',    excerpt: "Adjoints de quartier avec pouvoir de décision sur les projets locaux", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
-    T18: { stance: 'neutral',    excerpt: "Démocratie participative évoquée mais sans mécanisme de référendum par pétition explicite", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
-    T19: { stance: 'neutral',    excerpt: "Position non documentée dans les sources disponibles", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
-    T20: { stance: 'neutral',    excerpt: "Veut \"sauver le centre-ville\" en renforçant l'attractivité commerciale ; régulation tourisme non détaillée", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
-    T21: { stance: 'agree',    excerpt: "Concentrer les dépenses culturelles pour augmenter l'impact des événements existants", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T22: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour faciliter l'accès aux soins", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
-    T23: { stance: 'neutral',    excerpt: "Pas de revenu jeunes explicite dans les sources ; met plutôt l'accent sur les fournitures gratuites", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" }
+    T7:  { stance: 'agree',    excerpt: "Encadrement des loyers figurait dans son programme 2022 et est réaffirmé", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T8:  { stance: 'neutral',    excerpt: "Position non explicitement détaillée sur Airbnb dans les sources disponibles", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T9:  { stance: 'neutral',    excerpt: "Pas de réquisition explicite dans les sources ; politique de remise sur marché favorisée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T11:  { stance: 'agree',    excerpt: "Renforcer la présence de la police municipale sur le terrain avec des patrouilles régulières + brigade dédiée aux transports", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T12: { stance: 'disagree', excerpt: "Pas de proposition de rétablissement de l'arrêté anti-mendicité dans son programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T13: { stance: 'neutral',    excerpt: "Aborde la sécurité par la présence policière ET les politiques de prévention sociale", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T16: { stance: 'agree',    excerpt: "Audit financier des finances de la ville annoncé dès l'annonce de candidature", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T17: { stance: 'neutral',    excerpt: "Promet de ne pas \"charger la fiscalité\" mais sans engagement ferme de gel de la taxe foncière", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T18: { stance: 'agree',    excerpt: "Trajectoire zéro carbone à l'horizon 2050, objectifs 3-30-300 arbres (3 arbres visibles, 30% couverture, espace vert \u003c300m)", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T19: { stance: 'neutral',    excerpt: "Gratuité des fournitures scolaires annoncée, mais objectif bio/local des cantines non chiffré", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T20: { stance: 'agree',    excerpt: "Gratuité des 15 premiers m3 d'eau proposée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T22: { stance: 'agree',    excerpt: "Adjoints de quartier avec pouvoir de décision sur les projets locaux", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T23: { stance: 'neutral',    excerpt: "Démocratie participative évoquée mais sans mécanisme de référendum par pétition explicite", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T24: { stance: 'neutral',    excerpt: "Position non documentée dans les sources disponibles", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T26: { stance: 'neutral',    excerpt: "Veut \"sauver le centre-ville\" en renforçant l'attractivité commerciale ; régulation tourisme non détaillée", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T27: { stance: 'agree',    excerpt: "Concentrer les dépenses culturelles pour augmenter l'impact des événements existants", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T31: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour faciliter l'accès aux soins", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T32: { stance: 'neutral',    excerpt: "Pas de revenu jeunes explicite dans les sources ; met plutôt l'accent sur les fournitures gratuites", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T14: { stance: 'neutral',  excerpt: "Propose des pièges photographiques ciblés et l'éclairage intelligent plutôt qu'une extension massive des caméras", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T15: { stance: 'neutral',  excerpt: "Éclairage intelligent adaptatif plutôt que rétablissement complet ; approche pragmatique", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T10: { stance: 'agree',    excerpt: "Construction de logements sociaux et accessibles parmi les priorités du programme", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T21: { stance: 'agree',    excerpt: "Objectifs 3-30-300 : trois arbres visibles depuis chaque logement, 30% couverture arborée, espace vert à moins de 300m", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T28: { stance: 'agree',    excerpt: "Soutient le projet Gare à 360° mais avec des réserves sur le calendrier et le coût", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T29: { stance: 'agree',    excerpt: "Simplification administrative et soutien aux commerces de proximité dans son programme", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T30: { stance: 'agree',    excerpt: "Gratuité des fournitures scolaires annoncée comme mesure phare de pouvoir d'achat", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T25: { stance: 'agree',    excerpt: "Adjoints de quartier avec pouvoir de décision sur les projets locaux", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T6: { stance: 'neutral',  excerpt: "Pas de position explicite sur l'interdiction de la publicité dans les sources disponibles", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T33: { stance: 'agree',    excerpt: "Mesures de soutien aux étudiants via les fournitures gratuites et l'accès aux services publics", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" }
   },
   vetter: {
     T1:  { stance: 'neutral',    excerpt: "Veut \"repenser la ligne\" du tram nord et un 'Ring' reliant les quartiers ; critique le tracé actuel", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
@@ -1136,24 +1239,34 @@ const POSITIONS = {
     T3:  { stance: 'disagree', excerpt: "Veut corriger les aménagements qui \"paralysent la circulation\" ; fluidifier les feux tricolores", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
     T4:  { stance: 'agree',    excerpt: "Stationnement gratuit entre 12h et 14h pour soutenir les commerces de proximité", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
     T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur le 24h/24 des transports", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T6:  { stance: 'disagree', excerpt: "Pas de proposition d'encadrement des loyers dans son programme ; politique de logement axée sur la rénovation", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T7:  { stance: 'neutral',    excerpt: "Pas de position explicite sur la réglementation Airbnb dans les sources disponibles", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T8:  { stance: 'agree',    excerpt: "Politique du logement centrée sur la remise sur le marché des logements vacants", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T9:  { stance: 'agree',    excerpt: "Doublement des effectifs de la police municipale sur l'ensemble du mandat", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T10: { stance: 'agree',    excerpt: "Code de la rue permettant de sanctionner les comportements dangereux, incluant la mendicité agressive", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T11: { stance: 'agree',    excerpt: "Sanctions renforcées contre cyclistes imprudents, rodéos motorisés, incivilités", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T12: { stance: 'agree',    excerpt: "Situation financière de Strasbourg qualifiée d'\"alarmante\" ; chaque mesure sera chiffrée et évaluée", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T13: { stance: 'agree',    excerpt: "Aucune augmentation d'impôts ni de taxes durant le mandat — promesse ferme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T14: { stance: 'neutral',    excerpt: "S'oppose à \"l'opposition stérile\" entre écologie et économie mais ne fait pas de la transition écologique une priorité explicite", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur l'objectif 75% bio dans les cantines", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme ; finances de la ville au cœur de ses préoccupations", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T17: { stance: 'neutral',    excerpt: "Gouvernance de proximité évoquée sans précision sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T18: { stance: 'agree',    excerpt: "Tirage au sort mensuel de 100 Strasbourgeois + votation citoyenne pour les grands projets", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation citoyenne des résidents étrangers", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T20: { stance: 'disagree', excerpt: "Veut renforcer l'attractivité et l'animation du centre-ville ; orientation pro-tourisme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T21: { stance: 'agree',    excerpt: "Défend l'identité alsacienne et européenne de Strasbourg ; musées gratuits le dimanche, BNU 24h/24", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T22: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité à la gestion des dépenses existantes", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
-    T23: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; priorité à la baisse de la fiscalité", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" }
+    T7:  { stance: 'disagree', excerpt: "Pas de proposition d'encadrement des loyers dans son programme ; politique de logement axée sur la rénovation", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de position explicite sur la réglementation Airbnb dans les sources disponibles", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T9:  { stance: 'agree',    excerpt: "Politique du logement centrée sur la remise sur le marché des logements vacants", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T11:  { stance: 'agree',    excerpt: "Doublement des effectifs de la police municipale sur l'ensemble du mandat", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T12: { stance: 'agree',    excerpt: "Code de la rue permettant de sanctionner les comportements dangereux, incluant la mendicité agressive", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T13: { stance: 'agree',    excerpt: "Sanctions renforcées contre cyclistes imprudents, rodéos motorisés, incivilités", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T16: { stance: 'agree',    excerpt: "Situation financière de Strasbourg qualifiée d'\"alarmante\" ; chaque mesure sera chiffrée et évaluée", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T17: { stance: 'agree',    excerpt: "Aucune augmentation d'impôts ni de taxes durant le mandat — promesse ferme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T18: { stance: 'neutral',    excerpt: "S'oppose à \"l'opposition stérile\" entre écologie et économie mais ne fait pas de la transition écologique une priorité explicite", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur l'objectif 75% bio dans les cantines", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T20: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme ; finances de la ville au cœur de ses préoccupations", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T22: { stance: 'neutral',    excerpt: "Gouvernance de proximité évoquée sans précision sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T23: { stance: 'agree',    excerpt: "Tirage au sort mensuel de 100 Strasbourgeois + votation citoyenne pour les grands projets", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T24: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation citoyenne des résidents étrangers", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T26: { stance: 'disagree', excerpt: "Veut renforcer l'attractivité et l'animation du centre-ville ; orientation pro-tourisme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T27: { stance: 'agree',    excerpt: "Défend l'identité alsacienne et européenne de Strasbourg ; musées gratuits le dimanche, BNU 24h/24", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T31: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité à la gestion des dépenses existantes", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T32: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; priorité à la baisse de la fiscalité", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T14: { stance: 'agree',    excerpt: "Extension massive du réseau de vidéosurveillance pour couvrir l'ensemble des quartiers", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T15: { stance: 'agree',    excerpt: "Rétablissement complet de l'éclairage public la nuit dans toutes les rues", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T10: { stance: 'disagree', excerpt: "Priorité à la rénovation du parc existant et à l'accession à la propriété plutôt qu'à la construction massive de logements sociaux", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T21: { stance: 'neutral',  excerpt: "Végétalisation évoquée sans reprendre l'objectif chiffré de 30% de couverture arborée", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T28: { stance: 'neutral',  excerpt: "Critique la gestion des grands projets sous le mandat écologiste ; veut revoir les priorités d'investissement", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T29: { stance: 'agree',    excerpt: "Simplification administrative et soutien au tissu économique local comme axe central du programme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T30: { stance: 'disagree', excerpt: "Pas de fournitures gratuites dans son programme ; priorité à la baisse des impôts pour les familles", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T25: { stance: 'neutral',  excerpt: "Gouvernance de proximité évoquée sans précision sur des mairies de quartier spécifiques", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T6: { stance: 'disagree', excerpt: "Favorable à l'attractivité commerciale ; contre l'interdiction de la publicité dans l'espace public", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T33: { stance: 'neutral',  excerpt: "Pas de plan spécifique contre la précarité étudiante dans les sources disponibles", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" }
   },
   joron: {
     T1:  { stance: 'neutral',    excerpt: "Pas de position documentée sur le tram nord spécifiquement", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
@@ -1161,24 +1274,34 @@ const POSITIONS = {
     T3:  { stance: 'disagree', excerpt: "Veut redonner de la place aux voitures et aux commerces en centre-ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
     T4:  { stance: 'agree',    excerpt: "Parkings gratuits à midi et le samedi dans le centre-ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
     T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur les transports 24h/24", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T6:  { stance: 'disagree', excerpt: "Pas d'encadrement des loyers dans son programme ; pas de mention dans les sources disponibles", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T7:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T9:  { stance: 'agree',    excerpt: "50 policiers municipaux supplémentaires + brigade nocturne", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T10: { stance: 'agree',    excerpt: "Remettre en place l'arrêté anti-mendicité abrogé par la maire sortante en 2020", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
-    T11: { stance: 'agree',    excerpt: "Sécurité et propreté urbaine en axes centraux de campagne ; sanctions au cœur du dispositif", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T12: { stance: 'agree',    excerpt: "Audit sur les finances \"pour savoir où va l'argent des Strasbourgeois\"", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T13: { stance: 'agree',    excerpt: "Engagement de gestion rigoureuse sans hausse de la fiscalité locale", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T14: { stance: 'disagree', excerpt: "Critique la politique écologiste comme cause de la dégradation de la vie en ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T17: { stance: 'neutral',    excerpt: "Pas de position documentée sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T18: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T19: { stance: 'disagree', excerpt: "Le RN s'oppose généralement à l'extension des droits politiques des résidents étrangers", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T20: { stance: 'neutral',    excerpt: "Veut faire revenir les touristes plutôt que les réguler", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T21: { stance: 'agree',    excerpt: "Strasbourg comme vitrine nationale et européenne : valorisation du Marché de Noël et des événements", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T22: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité aux dépenses sécuritaires", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
-    T23: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; critique de l'assistanat", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" }
+    T7:  { stance: 'disagree', excerpt: "Pas d'encadrement des loyers dans son programme ; pas de mention dans les sources disponibles", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T9:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T11:  { stance: 'agree',    excerpt: "50 policiers municipaux supplémentaires + brigade nocturne", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T12: { stance: 'agree',    excerpt: "Remettre en place l'arrêté anti-mendicité abrogé par la maire sortante en 2020", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T13: { stance: 'agree',    excerpt: "Sécurité et propreté urbaine en axes centraux de campagne ; sanctions au cœur du dispositif", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T16: { stance: 'agree',    excerpt: "Audit sur les finances \"pour savoir où va l'argent des Strasbourgeois\"", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T17: { stance: 'agree',    excerpt: "Engagement de gestion rigoureuse sans hausse de la fiscalité locale", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T18: { stance: 'disagree', excerpt: "Critique la politique écologiste comme cause de la dégradation de la vie en ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T20: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T22: { stance: 'neutral',    excerpt: "Pas de position documentée sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T23: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T24: { stance: 'disagree', excerpt: "Le RN s'oppose généralement à l'extension des droits politiques des résidents étrangers", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T26: { stance: 'neutral',    excerpt: "Veut faire revenir les touristes plutôt que les réguler", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T27: { stance: 'agree',    excerpt: "Strasbourg comme vitrine nationale et européenne : valorisation du Marché de Noël et des événements", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T31: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité aux dépenses sécuritaires", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T32: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; critique de l'assistanat", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T14: { stance: 'agree',    excerpt: "Extension du réseau de caméras de vidéosurveillance parmi les mesures sécuritaires centrales", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T15: { stance: 'agree',    excerpt: "Rétablissement de l'éclairage public nocturne dans toutes les rues pour la sécurité", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T10: { stance: 'disagree', excerpt: "Pas d'objectif de construction de logements sociaux ; priorité à l'ordre et à la sécurité", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T21: { stance: 'neutral',  excerpt: "Pas de position documentée sur l'objectif de couverture arborée à 30%", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T28: { stance: 'neutral',  excerpt: "Pas de position documentée sur le projet Gare à 360°", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T29: { stance: 'agree',    excerpt: "Soutien aux commerces et à l'attractivité du centre-ville ; simplification des démarches", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T30: { stance: 'disagree', excerpt: "Pas de fournitures scolaires gratuites dans son programme ; critique des dépenses sociales excessives", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T25: { stance: 'neutral',  excerpt: "Pas de proposition de mairies de quartier dans les sources disponibles", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T6: { stance: 'disagree', excerpt: "Favorable à la publicité commerciale et à l'attractivité économique du centre-ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T33: { stance: 'disagree', excerpt: "Pas de plan spécifique contre la précarité étudiante ; critique de l'assistanat", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" }
   },
   kobryn: {
     T1:  { stance: 'agree',    excerpt: "Soutien à l'extension du réseau de transports en commun", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
@@ -1186,24 +1309,34 @@ const POSITIONS = {
     T3:  { stance: 'agree',    excerpt: "Réduction de la place de la voiture ; interdiction progressive des panneaux publicitaires", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
     T4:  { stance: 'agree',    excerpt: "Stationnement par tranches de revenus : gratuité pour les ménages précaires, tarif doublé pour les SUV", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
     T5:  { stance: 'agree',    excerpt: "Bus 24h/24 parmi les premières mesures annoncées", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
-    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers parmi les mesures phares du programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T7:  { stance: 'agree',    excerpt: "Réglementation stricte d'Airbnb", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T8:  { stance: 'agree',    excerpt: "Réquisition des logements vacants évoquée dans son programme de gauche radicale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T9:  { stance: 'disagree', excerpt: "Priorité à la lutte contre les discriminations et aux droits civiques plutôt qu'au renforcement policier", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T10: { stance: 'disagree', excerpt: "Contre les arrêtés punitifs ciblant les personnes précaires", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T11: { stance: 'disagree', excerpt: "Approche axée sur la justice sociale ; récépissé pour chaque contrôle policier pour lutter contre les discriminations", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T12: { stance: 'neutral',    excerpt: "Contrôle accru des délégations de service public ; pas d'audit au sens libéral du terme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T13: { stance: 'neutral',    excerpt: "Pas d'engagement explicite sur la taxe foncière ; financement par taxation des SUV et grands patrimoines", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T14: { stance: 'agree',    excerpt: "Transition écologique et justice sociale comme axes fondamentaux du programme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T15: { stance: 'agree',    excerpt: "Alimentation de qualité et souveraineté alimentaire dans les cantines publiques", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T16: { stance: 'agree',    excerpt: "Gratuité des 30 premiers mètres cubes d'eau de chaque foyer (première liste à proposer cette mesure)", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
-    T17: { stance: 'agree',    excerpt: "Démocratie participative et pouvoirs de quartier renforcés", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T18: { stance: 'agree',    excerpt: "Référendum révocatoire (20% corps électoral) + référendum d'initiative locale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T19: { stance: 'agree',    excerpt: "Récépissé pour chaque contrôle et lutte contre les discriminations ; programme inclusif pour tous les résidents", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T20: { stance: 'agree',    excerpt: "Marché de Noël payant pour les non-résidents de l'Eurométropole le week-end pour réguler l'afflux", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
-    T21: { stance: 'neutral',    excerpt: "Veut repenser les événements culturels sans \"course au gigantisme\" (ex : rénovation de l'Opéra)", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T22: { stance: 'agree',    excerpt: "\"Strasbourg doit être une ville qui prend soin de tout le monde\" — santé accessible pour tous", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
-    T23: { stance: 'agree',    excerpt: "Revenu pour les jeunes précaires parmi les mesures sociales phares", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" }
+    T7:  { stance: 'agree',    excerpt: "Encadrement des loyers parmi les mesures phares du programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T8:  { stance: 'agree',    excerpt: "Réglementation stricte d'Airbnb", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T9:  { stance: 'agree',    excerpt: "Réquisition des logements vacants évoquée dans son programme de gauche radicale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T11:  { stance: 'disagree', excerpt: "Priorité à la lutte contre les discriminations et aux droits civiques plutôt qu'au renforcement policier", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T12: { stance: 'disagree', excerpt: "Contre les arrêtés punitifs ciblant les personnes précaires", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T13: { stance: 'disagree', excerpt: "Approche axée sur la justice sociale ; récépissé pour chaque contrôle policier pour lutter contre les discriminations", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T16: { stance: 'neutral',    excerpt: "Contrôle accru des délégations de service public ; pas d'audit au sens libéral du terme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T17: { stance: 'neutral',    excerpt: "Pas d'engagement explicite sur la taxe foncière ; financement par taxation des SUV et grands patrimoines", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T18: { stance: 'agree',    excerpt: "Transition écologique et justice sociale comme axes fondamentaux du programme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T19: { stance: 'agree',    excerpt: "Alimentation de qualité et souveraineté alimentaire dans les cantines publiques", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T20: { stance: 'agree',    excerpt: "Gratuité des 30 premiers mètres cubes d'eau de chaque foyer (première liste à proposer cette mesure)", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T22: { stance: 'agree',    excerpt: "Démocratie participative et pouvoirs de quartier renforcés", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T23: { stance: 'agree',    excerpt: "Référendum révocatoire (20% corps électoral) + référendum d'initiative locale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T24: { stance: 'agree',    excerpt: "Récépissé pour chaque contrôle et lutte contre les discriminations ; programme inclusif pour tous les résidents", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T26: { stance: 'agree',    excerpt: "Marché de Noël payant pour les non-résidents de l'Eurométropole le week-end pour réguler l'afflux", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T27: { stance: 'neutral',    excerpt: "Veut repenser les événements culturels sans \"course au gigantisme\" (ex : rénovation de l'Opéra)", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T31: { stance: 'agree',    excerpt: "\"Strasbourg doit être une ville qui prend soin de tout le monde\" — santé accessible pour tous", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T32: { stance: 'agree',    excerpt: "Revenu pour les jeunes précaires parmi les mesures sociales phares", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T14: { stance: 'disagree', excerpt: "Opposition à la vidéosurveillance massive ; récépissé pour chaque contrôle policier pour lutter contre les discriminations", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T15: { stance: 'neutral',  excerpt: "Pas de position explicite sur l'éclairage nocturne ; priorité aux économies d'énergie et à la justice sociale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T10: { stance: 'agree',    excerpt: "Construction massive de logements sociaux et réquisition des logements vacants", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T21: { stance: 'agree',    excerpt: "Corridors de fraîcheur, végétalisation massive et objectifs au-delà du plan Canopée", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T28: { stance: 'neutral',  excerpt: "Critique la course au gigantisme des grands projets ; veut prioriser les investissements sociaux", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T29: { stance: 'disagree', excerpt: "Critique de la logique d'attractivité libérale ; priorité à l'économie sociale et solidaire et aux coopératives", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T30: { stance: 'agree',    excerpt: "Gratuité élargie des services publics incluant les fournitures scolaires", url: "https://pokaa.fr/2026/02/19/municipales-2026-a-strasbourg-florian-kobryn-devoile-20-nouvelles-mesures-sociales/" },
+    T25: { stance: 'agree',    excerpt: "Démocratie participative renforcée dans chaque quartier avec budget et pouvoirs décisionnels", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T6: { stance: 'agree',    excerpt: "Interdiction progressive des panneaux publicitaires dans l'espace public — mesure phare", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T33: { stance: 'agree',    excerpt: "Plan ambitieux contre la précarité étudiante : épiceries solidaires, logements, gratuité des transports pour les moins de 25 ans", url: "https://pokaa.fr/2026/02/19/municipales-2026-a-strasbourg-florian-kobryn-devoile-20-nouvelles-mesures-sociales/" }
   },
   jakubowicz: {
     T1:  { stance: 'disagree', excerpt: "Faisait partie de l'opposition qui a critiqué le tracé actuel du Tram Nord", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
@@ -1211,24 +1344,34 @@ const POSITIONS = {
     T3:  { stance: 'neutral',    excerpt: "Propose d'enterrer ou couvrir la M35 pour réconcilier voiture et espace public", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
     T4:  { stance: 'agree',    excerpt: "Forfait de 15 euros pour les professionnels et les responsables d'associations", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
     T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur les transports 24h/24", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T6:  { stance: 'neutral',    excerpt: "Pas de mention d'encadrement des loyers dans les sources disponibles", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T7:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T9:  { stance: 'agree',    excerpt: "Renforcement de la sécurité parmi ses axes de campagne", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T10: { stance: 'neutral',    excerpt: "Pas de position documentée sur le rétablissement de l'arrêté anti-mendicité", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T11: { stance: 'neutral',    excerpt: "Approche pragmatique sur la sécurité ; position entre prévention et sanctions", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T12: { stance: 'agree',    excerpt: "Moins de \"dépenses superflues\" et une \"pause fiscale\" pour les ménages et les entreprises", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T13: { stance: 'agree',    excerpt: "Pause fiscale annoncée — engagement de ne pas augmenter la taxe foncière", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T14: { stance: 'neutral',    excerpt: "Approche pragmatique de la transition écologique sans en faire un axe central", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme centrist", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
-    T17: { stance: 'neutral',    excerpt: "Approche par délégués de quartier issus de collectifs locaux mais sans budget dédié précisé", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T18: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation des non-français", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T20: { stance: 'neutral',    excerpt: "Veut renforcer l'attractivité du centre-ville ; position équilibrée sur le tourisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T21: { stance: 'agree',    excerpt: "Strasbourg capitale européenne : renforcement des événements et du rayonnement international", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T22: { stance: 'neutral',    excerpt: "Pas de mutuelle communale explicite dans les sources disponibles", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
-    T23: { stance: 'disagree', excerpt: "Approche libérale centriste ; pas de revenu jeunes dans son programme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" }
+    T7:  { stance: 'neutral',    excerpt: "Pas de mention d'encadrement des loyers dans les sources disponibles", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T9:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T11:  { stance: 'agree',    excerpt: "Renforcement de la sécurité parmi ses axes de campagne", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T12: { stance: 'neutral',    excerpt: "Pas de position documentée sur le rétablissement de l'arrêté anti-mendicité", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T13: { stance: 'neutral',    excerpt: "Approche pragmatique sur la sécurité ; position entre prévention et sanctions", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T16: { stance: 'agree',    excerpt: "Moins de \"dépenses superflues\" et une \"pause fiscale\" pour les ménages et les entreprises", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T17: { stance: 'agree',    excerpt: "Pause fiscale annoncée — engagement de ne pas augmenter la taxe foncière", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T18: { stance: 'neutral',    excerpt: "Approche pragmatique de la transition écologique sans en faire un axe central", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T20: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme centrist", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T22: { stance: 'neutral',    excerpt: "Approche par délégués de quartier issus de collectifs locaux mais sans budget dédié précisé", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T23: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T24: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation des non-français", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T26: { stance: 'neutral',    excerpt: "Veut renforcer l'attractivité du centre-ville ; position équilibrée sur le tourisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T27: { stance: 'agree',    excerpt: "Strasbourg capitale européenne : renforcement des événements et du rayonnement international", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T31: { stance: 'neutral',    excerpt: "Pas de mutuelle communale explicite dans les sources disponibles", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T32: { stance: 'disagree', excerpt: "Approche libérale centriste ; pas de revenu jeunes dans son programme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T14: { stance: 'agree',    excerpt: "Extension de la vidéosurveillance pour sécuriser l'ensemble des quartiers", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T15: { stance: 'agree',    excerpt: "Rallumer la lumière dans l'ensemble des rues de Strasbourg — mesure phare de campagne", url: "https://pierrejakubowicz.eu/post_idea/rallumer-la-lumiere-dans-lensemble-des-rues-de-strasbourg/" },
+    T10: { stance: 'neutral',  excerpt: "Approche centriste du logement ; pas d'objectif chiffré de logements sociaux dans les sources", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T21: { stance: 'neutral',  excerpt: "Pas de reprise explicite de l'objectif 3-30-300 dans son programme", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T28: { stance: 'neutral',  excerpt: "Veut revoir les priorités d'investissement ; critique les dépenses superflues des grands projets", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T29: { stance: 'agree',    excerpt: "Guichet unique et mairies de quartier pour simplifier les démarches — mesure centrale du programme", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T30: { stance: 'neutral',  excerpt: "Pas de position explicite sur la gratuité des fournitures scolaires dans les sources", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T25: { stance: 'agree',    excerpt: "Création de 10 mairies de quartier avec services dédiés et horaires élargis — proposition phare", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T6: { stance: 'neutral',  excerpt: "Position intermédiaire : pas d'interdiction mais régulation de l'affichage publicitaire", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T33: { stance: 'neutral',  excerpt: "Pas de plan spécifique contre la précarité étudiante dans les sources disponibles", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" }
   }
 };
 
