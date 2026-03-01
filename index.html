@@ -1424,9 +1424,10 @@ function renderQuestion() {
 function castVote(type) {
   const q = THESES[currentIndex];
   const existing = userAnswers[q.id] || {};
-  userAnswers[q.id] = { vote: type, double: existing.double || false };
+  const isDeselect = existing.vote === type;
+  userAnswers[q.id] = { vote: isDeselect ? 'skip' : type, double: existing.double || false };
   document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
-  document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
+  if (!isDeselect) document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
   updateNextLabel();
 }
 
