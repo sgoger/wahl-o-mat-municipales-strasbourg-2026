@@ -1394,6 +1394,7 @@ CANDIDATES.forEach(c => { c.positions = POSITIONS[c.id] || {}; });
 let currentIndex = 0;
 const userAnswers = {}; // T1 => { vote: 'agree'|'neutral'|'disagree'|'skip', double: bool }
 let selectedCandidates = new Set();
+let autoAdvanceTimer = null;
 
 // =============================================
 // QUIZ LOGIC
@@ -1441,6 +1442,8 @@ function renderQuestion() {
 }
 
 function castVote(type) {
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
   const q = THESES[currentIndex];
   const existing = userAnswers[q.id] || {};
   const isDeselect = existing.vote === type;
@@ -1448,13 +1451,16 @@ function castVote(type) {
   document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
   if (!isDeselect) document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
   updateNextLabel();
+
+  if (!isDeselect && !reviewMode) {
+    autoAdvanceTimer = setTimeout(function() { autoAdvanceTimer = null; nextQuestion(); }, 250);
+  }
 }
 
 function updateNextLabel() {
-  const q = THESES[currentIndex];
+  if (reviewMode) return;
   const isLast = currentIndex === THESES.length - 1;
-  const hasVote = userAnswers[q.id] && userAnswers[q.id].vote !== 'skip';
-  document.getElementById('btn-next').textContent = isLast ? 'Voir les résultats →' : (hasVote ? 'Suivant →' : 'Passer');
+  document.getElementById('btn-next').textContent = isLast ? 'Voir les résultats →' : 'Passer';
 }
 
 function toggleDoubleWeight() {
@@ -1465,6 +1471,8 @@ function toggleDoubleWeight() {
 }
 
 function nextQuestion() {
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
   const q = THESES[currentIndex];
   if (!userAnswers[q.id]) userAnswers[q.id] = { vote: 'skip', double: false };
 
@@ -1489,6 +1497,7 @@ function nextQuestion() {
 }
 
 function prevQuestion() {
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
   if (currentIndex > 0) {
     currentIndex--;
     renderQuestion();
@@ -1685,6 +1694,7 @@ function showTab(tab) {
 }
 
 function restartQuiz() {
+  if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
   Object.keys(userAnswers).forEach(k => delete userAnswers[k]);
   currentIndex = 0;
   reviewMode = false;

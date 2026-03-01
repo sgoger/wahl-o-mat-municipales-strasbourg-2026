@@ -43,7 +43,9 @@ export function loadApp() {
       get currentIndex() { return currentIndex; },
       set currentIndex(v) { currentIndex = v; },
       get reviewMode() { return reviewMode; },
-      set reviewMode(v) { reviewMode = v; }
+      set reviewMode(v) { reviewMode = v; },
+      get autoAdvanceTimer() { return autoAdvanceTimer; },
+      set autoAdvanceTimer(v) { autoAdvanceTimer = v; }
     };
   })()`;
 
@@ -55,6 +57,7 @@ export function loadApp() {
  * Call in beforeEach to isolate tests.
  */
 export function resetState(app) {
+  if (app.autoAdvanceTimer) { clearTimeout(app.autoAdvanceTimer); app.autoAdvanceTimer = null; }
   Object.keys(app.userAnswers).forEach(k => delete app.userAnswers[k]);
   app.currentIndex = 0;
   app.reviewMode = false;
