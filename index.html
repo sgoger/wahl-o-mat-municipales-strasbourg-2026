@@ -376,16 +376,6 @@
   }
   .btn-nav.secondary:hover { background: var(--red-pale); }
   .btn-nav:disabled { opacity: 0.3; cursor: default; }
-  .btn-skip {
-    font-size: 13px;
-    color: var(--gray);
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
-    padding: 4px;
-  }
-
   /* RESULTS SCREEN */
   #screen-results { display: none; padding-top: 32px; }
 
@@ -705,7 +695,7 @@
       <div class="intro-steps">
         <div class="intro-step">
           <div class="step-num">1</div>
-          <p>Répondez à 33 questions par D'accord, Neutre ou Pas d'accord</p>
+          <p>Répondez à 33 questions par D'accord, Indifférent ou Pas d'accord</p>
         </div>
         <div class="intro-step">
           <div class="step-num">2</div>
@@ -774,7 +764,7 @@
       <div class="question-docs" id="question-docs" style="display:none;"></div>
       <div class="vote-buttons">
         <button class="vote-btn agree" onclick="castVote('agree')">✓ D'accord</button>
-        <button class="vote-btn neutral" onclick="castVote('neutral')">— Neutre</button>
+        <button class="vote-btn neutral" onclick="castVote('neutral')">— Indifférent</button>
         <button class="vote-btn disagree" onclick="castVote('disagree')">✗ Pas d'accord</button>
       </div>
       <div class="double-weight-row">
@@ -787,8 +777,7 @@
 
     <div class="quiz-nav">
       <button class="btn-nav secondary" id="btn-prev" onclick="prevQuestion()" disabled>← Précédent</button>
-      <button class="btn-skip" onclick="skipQuestion()">Passer cette thèse</button>
-      <button class="btn-nav primary" id="btn-next" onclick="nextQuestion()">Suivant →</button>
+      <button class="btn-nav primary" id="btn-next" onclick="nextQuestion()">Passer</button>
     </div>
   </div>
 
@@ -1429,15 +1418,24 @@ function renderQuestion() {
 
   // Navigation buttons
   document.getElementById('btn-prev').disabled = currentIndex === 0;
-  document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Suivant →';
+  updateNextLabel();
 }
 
 function castVote(type) {
   const q = THESES[currentIndex];
   const existing = userAnswers[q.id] || {};
-  userAnswers[q.id] = { vote: type, double: existing.double || false };
+  const isDeselect = existing.vote === type;
+  userAnswers[q.id] = { vote: isDeselect ? 'skip' : type, double: existing.double || false };
   document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
-  document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
+  if (!isDeselect) document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
+  updateNextLabel();
+}
+
+function updateNextLabel() {
+  const q = THESES[currentIndex];
+  const isLast = currentIndex === THESES.length - 1;
+  const hasVote = userAnswers[q.id] && userAnswers[q.id].vote !== 'skip';
+  document.getElementById('btn-next').textContent = isLast ? 'Voir les résultats →' : (hasVote ? 'Suivant →' : 'Passer');
 }
 
 function toggleDoubleWeight() {
@@ -1449,12 +1447,12 @@ function toggleDoubleWeight() {
 
 function nextQuestion() {
   const q = THESES[currentIndex];
-  if (!userAnswers[q.id]) userAnswers[q.id] = { vote: 'neutral', double: false };
+  if (!userAnswers[q.id]) userAnswers[q.id] = { vote: 'skip', double: false };
 
   if (reviewMode) {
     // Return to results after editing
     reviewMode = false;
-    document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Suivant →';
+    updateNextLabel();
     document.getElementById('screen-quiz').style.display = 'none';
     document.getElementById('screen-results').style.display = 'block';
     showResults();
@@ -1475,17 +1473,6 @@ function prevQuestion() {
   if (currentIndex > 0) {
     currentIndex--;
     renderQuestion();
-  }
-}
-
-function skipQuestion() {
-  const q = THESES[currentIndex];
-  userAnswers[q.id] = { vote: 'skip', double: false };
-  if (currentIndex < THESES.length - 1) {
-    currentIndex++;
-    renderQuestion();
-  } else {
-    showResults();
   }
 }
 
@@ -1670,7 +1657,7 @@ function restartQuiz() {
   reviewMode = false;
   document.getElementById('screen-results').style.display = 'none';
   document.getElementById('review-panel').style.display = 'none';
-  document.getElementById('btn-next').textContent = 'Suivant →';
+  document.getElementById('btn-next').textContent = 'Passer';
   document.getElementById('screen-intro').style.display = 'block';
 }
 
@@ -1694,7 +1681,7 @@ function toggleReview() {
 function buildReviewList() {
   const container = document.getElementById('review-list');
   const icons = { agree: '✓', neutral: '—', disagree: '✗', skip: '↷' };
-  const labels = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord", skip: 'Passée' };
+  const labels = { agree: "D'accord", neutral: 'Indifférent', disagree: "Pas d'accord", skip: 'Passée' };
   const colors = { agree: '#2E7D32', neutral: '#888', disagree: '#c62828', skip: '#999' };
 
   let html = '';

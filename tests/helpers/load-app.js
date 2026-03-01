@@ -37,7 +37,7 @@ export function loadApp() {
       calcScore, buildDetailHTML, buildComparisonTable,
       buildCompCheckboxes, buildReviewList, renderQuestion,
       castVote, startQuiz, nextQuestion, prevQuestion,
-      skipQuestion, toggleDoubleWeight, editQuestion,
+      toggleDoubleWeight, editQuestion, updateNextLabel,
       restartQuiz, showResults, showTab, showSources,
       toggleDetail, toggleReview,
       get currentIndex() { return currentIndex; },
