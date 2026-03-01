@@ -299,26 +299,26 @@
     text-align: center;
     background: white;
   }
-  .vote-btn.accord {
+  .vote-btn.agree {
     border-color: var(--agree);
     color: var(--agree);
   }
-  .vote-btn.accord:hover, .vote-btn.accord.selected {
+  .vote-btn.agree:hover, .vote-btn.agree.selected {
     background: var(--agree-bg);
     border-color: var(--agree);
   }
-  .vote-btn.neutre {
+  .vote-btn.neutral {
     border-color: var(--neutral);
     color: var(--neutral);
   }
-  .vote-btn.neutre:hover, .vote-btn.neutre.selected {
+  .vote-btn.neutral:hover, .vote-btn.neutral.selected {
     background: var(--neutral-bg);
   }
-  .vote-btn.desaccord {
+  .vote-btn.disagree {
     border-color: var(--disagree);
     color: var(--disagree);
   }
-  .vote-btn.desaccord:hover, .vote-btn.desaccord.selected {
+  .vote-btn.disagree:hover, .vote-btn.disagree.selected {
     background: var(--disagree-bg);
   }
   .vote-btn.selected {
@@ -1513,10 +1513,10 @@ function buildComparisonTable() {
 }
 
 function showTab(tab) {
-  document.getElementById('tab-rankings').style.display = tab === 'resultats' ? 'block' : 'none';
-  document.getElementById('tab-comparison').style.display = tab === 'comparaison' ? 'block' : 'none';
+  document.getElementById('tab-rankings').style.display = tab === 'rankings' ? 'block' : 'none';
+  document.getElementById('tab-comparison').style.display = tab === 'comparison' ? 'block' : 'none';
   document.querySelectorAll('.tab-btn').forEach((b, i) => {
-    b.classList.toggle('active', (i === 0 && tab === 'resultats') || (i === 1 && tab === 'comparaison'));
+    b.classList.toggle('active', (i === 0 && tab === 'rankings') || (i === 1 && tab === 'comparison'));
   });
   if (tab === 'comparison') buildComparisonTable();
 }
@@ -1560,7 +1560,7 @@ function buildReviewList() {
     const questionsForTheme = THESES.filter(t => t.category === theme);
     html += '<div style="margin-bottom:14px;">';
     html += '<div style="font-size:0.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#888;margin-bottom:6px;padding-left:4px;">' + theme + '</div>';
-    questionsInTheme.forEach(q => {
+    questionsForTheme.forEach(q => {
       const ua = userAnswers[q.id];
       const vote = ua ? ua.vote : 'skip';
       const isDouble = ua ? (ua.double || false) : false;
