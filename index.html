@@ -495,7 +495,25 @@
   .pos-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
   .pos-question-text { font-size: 13px; color: var(--gray-dark); line-height: 1.4; }
   .pos-question-text strong { font-weight: 600; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
-  .pos-candidate-stance {
+  .pos-stances {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    grid-column: 1 / -1;
+  }
+  .pos-stance-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pos-stance-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .pos-stance-badge {
     font-size: 12px;
     font-weight: 600;
     padding: 2px 8px;
@@ -1553,6 +1571,7 @@ function showResults() {
 
 function buildDetailHTML(candidate) {
   let html = '<div class="candidate-positions">';
+  const stanceLabels = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord" };
   THESES.forEach(t => {
     const ua = userAnswers[t.id];
     if (!ua || ua.vote === 'skip') return;
@@ -1562,11 +1581,8 @@ function buildDetailHTML(candidate) {
     const match = ua.vote === cp.stance;
     const rowClass = match ? 'match' : (ua.vote !== 'neutral' && cp.stance !== 'neutral' ? 'mismatch' : '');
 
-    const icons = { agree: '✓', neutral: '–', disagree: '✗' };
-    const userIcon = icons[ua.vote] || '?';
-    const candStance = cp.stance;
-    const posClass = 'pos-' + candStance;
-    const posLabel = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord" }[candStance] || '?';
+    const userLabel = stanceLabels[ua.vote] || '?';
+    const candLabel = stanceLabels[cp.stance] || '?';
 
     html += `
       <div class="position-row ${rowClass}">
@@ -1575,7 +1591,16 @@ function buildDetailHTML(candidate) {
           <strong>${t.label}</strong>
           ${t.text}
         </div>
-        <div class="pos-candidate-stance ${posClass}">${posLabel}</div>
+        <div class="pos-stances">
+          <div class="pos-stance-item">
+            <span class="pos-stance-label">Vous</span>
+            <span class="pos-stance-badge pos-${ua.vote}">${userLabel}</span>
+          </div>
+          <div class="pos-stance-item">
+            <span class="pos-stance-label">${candidate.name.split(' ').pop()}</span>
+            <span class="pos-stance-badge pos-${cp.stance}">${candLabel}</span>
+          </div>
+        </div>
         <div class="pos-source">
           ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>
         </div>
