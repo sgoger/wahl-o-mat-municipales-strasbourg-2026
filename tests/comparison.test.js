@@ -20,6 +20,11 @@ describe('buildComparisonTable', () => {
   // -----------------------------------------------------------
   // Column headers
   // -----------------------------------------------------------
+  test('includes "Vous" column header', () => {
+    const html = getTableHTML();
+    expect(html).toContain('Vous');
+  });
+
   test('includes column header for each selected candidate', () => {
     const html = getTableHTML();
     // Default selectedCandidates: barseghian, trautmann, vetter
@@ -130,8 +135,8 @@ describe('buildComparisonTable', () => {
     // T1 is the first non-theme row
     const t1Row = rows[0];
     const cells = t1Row.querySelectorAll('td');
-    // Second cell (after thesis text) should be barseghian's stance
-    const stanceCell = cells[1];
+    // Third cell (after thesis text and Vous column) should be barseghian's stance
+    const stanceCell = cells[2];
     expect(stanceCell.className).toBe('cell-agree');
     expect(stanceCell.textContent).toBe('✓');
   });
@@ -156,8 +161,68 @@ describe('buildComparisonTable', () => {
 
     expect(t11Row).toBeTruthy();
     const cells = t11Row.querySelectorAll('td');
-    const stanceCell = cells[1];
+    const stanceCell = cells[2];
     expect(stanceCell.className).toBe('cell-disagree');
     expect(stanceCell.textContent).toBe('✗');
+  });
+
+  // -----------------------------------------------------------
+  // User answers column
+  // -----------------------------------------------------------
+  test('shows user agree answer as checkmark', () => {
+    app.userAnswers.T1 = { vote: 'agree', double: false };
+
+    app.buildComparisonTable();
+    const table = document.getElementById('comp-table');
+    const rows = table.querySelectorAll('tbody tr:not(.theme-row)');
+    const t1Row = rows[0];
+    const vousCell = t1Row.querySelectorAll('td')[1];
+    expect(vousCell.className).toBe('cell-agree');
+    expect(vousCell.textContent).toBe('✓');
+  });
+
+  test('shows user disagree answer as cross', () => {
+    app.userAnswers.T1 = { vote: 'disagree', double: false };
+
+    app.buildComparisonTable();
+    const table = document.getElementById('comp-table');
+    const rows = table.querySelectorAll('tbody tr:not(.theme-row)');
+    const t1Row = rows[0];
+    const vousCell = t1Row.querySelectorAll('td')[1];
+    expect(vousCell.className).toBe('cell-disagree');
+    expect(vousCell.textContent).toBe('✗');
+  });
+
+  test('shows user neutral answer as dash', () => {
+    app.userAnswers.T1 = { vote: 'neutral', double: false };
+
+    app.buildComparisonTable();
+    const table = document.getElementById('comp-table');
+    const rows = table.querySelectorAll('tbody tr:not(.theme-row)');
+    const t1Row = rows[0];
+    const vousCell = t1Row.querySelectorAll('td')[1];
+    expect(vousCell.className).toBe('cell-neutral');
+    expect(vousCell.textContent).toBe('—');
+  });
+
+  test('shows unknown indicator for skipped questions', () => {
+    app.userAnswers.T1 = { vote: 'skip', double: false };
+
+    app.buildComparisonTable();
+    const table = document.getElementById('comp-table');
+    const rows = table.querySelectorAll('tbody tr:not(.theme-row)');
+    const t1Row = rows[0];
+    const vousCell = t1Row.querySelectorAll('td')[1];
+    expect(vousCell.className).toBe('cell-unknown');
+  });
+
+  test('shows unknown indicator for unanswered questions', () => {
+    // T1 not in userAnswers at all
+    app.buildComparisonTable();
+    const table = document.getElementById('comp-table');
+    const rows = table.querySelectorAll('tbody tr:not(.theme-row)');
+    const t1Row = rows[0];
+    const vousCell = t1Row.querySelectorAll('td')[1];
+    expect(vousCell.className).toBe('cell-unknown');
   });
 });
