@@ -2,7 +2,7 @@
 
 Outil citoyen d'aide à la décision pour les élections municipales de Strasbourg des 15 et 22 mars 2026.
 
-👉 **[Accéder à l'outil](https://sgoger.github.io/wahlomat-strasbourg-2026/)**
+👉 **[Accéder à l'outil](https://sgoger.github.io/wahl-o-mat-municipales-strasbourg-2026/)**
 
 ---
 
