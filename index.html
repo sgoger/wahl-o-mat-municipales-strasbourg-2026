@@ -1374,7 +1374,7 @@ CANDIDATES.forEach(c => { c.positions = POSITIONS[c.id] || {}; });
 // =============================================
 let currentIndex = 0;
 const userAnswers = {}; // T1 => { vote: 'agree'|'neutral'|'disagree'|'skip', double: bool }
-let selectedCandidates = new Set(['barseghian', 'trautmann', 'vetter']);
+let selectedCandidates = new Set();
 
 // =============================================
 // QUIZ LOGIC
@@ -1546,6 +1546,7 @@ function showResults() {
     }, 100 + i * 150);
   });
 
+  selectedCandidates = new Set(scores.slice(0, 3).map(c => c.id));
   buildComparisonTable();
   buildCompCheckboxes(scores);
 }
