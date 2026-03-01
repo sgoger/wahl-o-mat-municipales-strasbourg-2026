@@ -622,6 +622,7 @@
     white-space: nowrap;
   }
   .comp-table th.these-col { width: 280px; }
+  .comp-table th.vous-col { background: var(--ink); }
   .comp-table td {
     padding: 10px 14px;
     border-bottom: 1px solid var(--gray-light);
@@ -1645,6 +1646,7 @@ function buildComparisonTable() {
   const cands = candIds.map(id => CANDIDATES.find(c => c.id === id)).filter(Boolean);
 
   let html = '<thead><tr><th class="these-col">Thèse</th>';
+  html += '<th class="vous-col">Vous</th>';
   cands.forEach(c => { html += `<th style="color:white;background:${c.color}">${c.name.split(' ').pop()}</th>`; });
   html += '</tr></thead><tbody>';
 
@@ -1652,9 +1654,14 @@ function buildComparisonTable() {
   THESES.forEach(t => {
     if (t.category !== currentTheme) {
       currentTheme = t.category;
-      html += `<tr class="theme-row"><td colspan="${cands.length + 1}">${t.category}</td></tr>`;
+      html += `<tr class="theme-row"><td colspan="${cands.length + 2}">${t.category}</td></tr>`;
     }
     html += `<tr><td style="font-size:12px">${t.text}</td>`;
+    const uv = userAnswers[t.id]?.vote;
+    if (uv === 'agree') html += '<td class="cell-agree">✓</td>';
+    else if (uv === 'neutral') html += '<td class="cell-neutral">—</td>';
+    else if (uv === 'disagree') html += '<td class="cell-disagree">✗</td>';
+    else html += '<td class="cell-unknown">–</td>';
     cands.forEach(c => {
       const pos = POSITIONS[c.id]?.[t.id]?.stance;
       if (pos === 'agree') html += '<td class="cell-agree">✓</td>';
