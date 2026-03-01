@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wahl-O-Mat · Strasbourg 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C62828;
+    --red-light: #EF5350;
+    --red-pale: #FFEBEE;
+    --gold: #B8860B;
+    --gold-light: #FDD835;
+    --noir: #1A1A1A;
+    --gray-dark: #3D3D3D;
+    --gray: #6B6B6B;
+    --gray-light: #EEEEEE;
+    --white: #FAFAF8;
+    --ink: #1C1B22;
+    --agree: #2E7D32;
+    --agree-bg: #E8F5E9;
+    --neutral: #E65100;
+    --neutral-bg: #FFF3E0;
+    --disagree: #B71C1C;
+    --disagree-bg: #FFEBEE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--red);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg,
+      white 0px, white 1px,
+      transparent 1px, transparent 20px
+    );
+  }
+  .header-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 32px;
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .header-title em {
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .header-sub {
+    font-size: 15px;
+    opacity: 0.85;
+    max-width: 500px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .header-meta {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .header-badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* MAIN LAYOUT */
+  .main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* INTRO SCREEN */
+  #screen-intro {
+    padding-top: 48px;
+  }
+  .intro-card {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .intro-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    color: var(--red);
+  }
+  .intro-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-dark);
+    margin-bottom: 12px;
+  }
+  .intro-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .intro-step {
+    background: var(--red-pale);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .intro-step .step-num {
+    width: 36px; height: 36px;
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 auto 12px;
+  }
+  .intro-step p {
+    font-size: 13px;
+    color: var(--gray-dark);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .btn-start {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 32px auto 0;
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-start:hover { background: #B71C1C; transform: translateY(-1px); }
+  .btn-start:active { transform: translateY(0); }
+
+  /* QUIZ SCREEN */
+  #screen-quiz { display: none; padding-top: 32px; }
+
+  .progress-bar-wrap {
+    background: var(--gray-light);
+    border-radius: 4px;
+    height: 6px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 24px;
+    text-align: right;
+  }
+
+  .question-card {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .question-theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gray-light);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .question-number {
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .question-docs {
+    background: #f8f6f0;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+  .docs-label {
+    font-weight: 700;
+    color: #555;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .doc-link {
+    display: inline-block;
+    color: #1a2a4a;
+    text-decoration: none;
+    border-bottom: 1px solid #c8b87a;
+    padding-bottom: 1px;
+    margin-right: 6px;
+    transition: color .15s, border-color .15s;
+  }
+  .doc-link:hover {
+    color: var(--red);
+    border-color: var(--red);
+  }
+  .doc-link::before {
+    content: '↗ ';
+    font-size: 0.75em;
+    opacity: 0.6;
+  }
+
+  .vote-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .vote-btn {
+    padding: 14px 8px;
+    border-radius: 8px;
+    border: 2px solid;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    background: white;
+  }
+  .vote-btn.accord {
+    border-color: var(--agree);
+    color: var(--agree);
+  }
+  .vote-btn.accord:hover, .vote-btn.accord.selected {
+    background: var(--agree-bg);
+    border-color: var(--agree);
+  }
+  .vote-btn.neutre {
+    border-color: var(--neutral);
+    color: var(--neutral);
+  }
+  .vote-btn.neutre:hover, .vote-btn.neutre.selected {
+    background: var(--neutral-bg);
+  }
+  .vote-btn.desaccord {
+    border-color: var(--disagree);
+    color: var(--disagree);
+  }
+  .vote-btn.desaccord:hover, .vote-btn.desaccord.selected {
+    background: var(--disagree-bg);
+  }
+  .vote-btn.selected {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .double-weight-row {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .double-weight-row label {
+    font-size: 13px;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .double-weight-row input[type=checkbox] {
+    accent-color: var(--red);
+    width: 16px; height: 16px;
+    cursor: pointer;
+  }
+
+  .quiz-nav {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-nav {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid var(--red);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-nav.primary {
+    background: var(--red);
+    color: white;
+  }
+  .btn-nav.primary:hover { background: #B71C1C; }
+  .btn-nav.secondary {
+    background: white;
+    color: var(--red);
+  }
+  .btn-nav.secondary:hover { background: var(--red-pale); }
+  .btn-nav:disabled { opacity: 0.3; cursor: default; }
+  .btn-skip {
+    font-size: 13px;
+    color: var(--gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 4px;
+  }
+
+  /* RESULTS SCREEN */
+  #screen-results { display: none; padding-top: 32px; }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .results-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .results-header p {
+    color: var(--gray);
+    font-size: 15px;
+  }
+
+  .candidate-result {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s;
+  }
+  .candidate-result:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .candidate-result.top-1 {
+    border-color: var(--gold);
+    border-width: 2px;
+    box-shadow: 0 4px 20px rgba(184,134,11,0.2);
+  }
+  .candidate-result.top-1 .cand-rank { background: var(--gold); }
+
+  .cand-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    gap: 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .cand-rank {
+    width: 36px; height: 36px;
+    background: var(--gray-dark);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .cand-info { flex: 1; }
+  .cand-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .cand-party {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .cand-score-wrap { text-align: right; }
+  .cand-score-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .cand-score-label { font-size: 11px; color: var(--gray); }
+
+  .score-bar-wrap {
+    padding: 0 24px 20px;
+  }
+  .score-bar-bg {
+    background: var(--gray-light);
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cand-detail {
+    display: none;
+    border-top: 1px solid var(--gray-light);
+    padding: 24px;
+    animation: expandIn 0.25s ease;
+  }
+  @keyframes expandIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cand-detail.open { display: block; }
+
+  .candidate-positions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .position-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: start;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--gray-light);
+  }
+  .position-row.match { background: var(--agree-bg); }
+  .position-row.mismatch { background: var(--disagree-bg); }
+  .pos-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .pos-question-text { font-size: 13px; color: var(--gray-dark); line-height: 1.4; }
+  .pos-question-text strong { font-weight: 600; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+  .pos-candidate-stance {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .pos-agree { background: var(--agree); color: white; }
+  .pos-neutral { background: var(--neutral); color: white; }
+  .pos-disagree { background: var(--disagree); color: white; }
+  .pos-source {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    color: var(--gray);
+  }
+  .pos-source a {
+    color: var(--red);
+    text-decoration: none;
+  }
+  .pos-source a:hover { text-decoration: underline; }
+
+  .toggle-detail {
+    font-size: 12px;
+    color: var(--red);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .toggle-detail::after { content: '▼'; font-size: 10px; transition: transform 0.2s; }
+  .toggle-detail.open::after { transform: rotate(180deg); }
+
+  .results-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid var(--red);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-action.primary { background: var(--red); color: white; }
+  .btn-action.primary:hover { background: #B71C1C; }
+  .btn-action.secondary { background: white; color: var(--red); }
+  .btn-action.secondary:hover { background: var(--red-pale); }
+
+  /* COMPARAISON SCREEN */
+  #screen-comparaison { display: none; padding-top: 32px; }
+  .comp-controls {
+    background: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .comp-controls h3 {
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .cand-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cand-check-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 2px solid var(--gray-light);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: white;
+    color: var(--gray-dark);
+  }
+  .cand-check-btn.active {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-pale);
+  }
+
+  .comp-table-wrap { overflow-x: auto; }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .comp-table th {
+    background: var(--red);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .comp-table th.these-col { width: 280px; }
+  .comp-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-light);
+    vertical-align: middle;
+  }
+  .comp-table tr:hover td { background: #F9F9F9; }
+  .comp-table .theme-row td {
+    background: var(--ink);
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+  }
+  .cell-agree { text-align: center; color: var(--agree); font-size: 18px; }
+  .cell-neutral { text-align: center; color: var(--neutral); font-size: 18px; }
+  .cell-disagree { text-align: center; color: var(--disagree); font-size: 18px; }
+  .cell-unknown { text-align: center; color: #CCC; font-size: 18px; }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--gray-light);
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .site-footer a { color: var(--red); text-decoration: none; }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    border-bottom: 2px solid var(--gray-light);
+    margin-bottom: 24px;
+    gap: 4px;
+  }
+  .tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
+
+  @media (max-width: 600px) {
+    .vote-buttons { grid-template-columns: 1fr; }
+    .cand-header { padding: 16px; }
+    .intro-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-bg"></div>
+  <div class="header-inner">
+    <div class="header-eyebrow">🗳 Élections Municipales · 15 & 22 Mars 2026</div>
+    <h1 class="header-title">Wahl-O-Mat<br><em>Strasbourg</em></h1>
+    <p class="header-sub">Découvrez quel candidat à la mairie de Strasbourg est le plus proche de vos convictions sur 23 thèses clés de la campagne.</p>
+    <div class="header-meta">
+      <span class="header-badge">23 thèses</span>
+      <span class="header-badge">6 candidats</span>
+      <span class="header-badge">Sources vérifiées</span>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+
+  <!-- INTRO -->
+  <div id="screen-intro">
+    <div class="intro-card">
+      <h2>Comment ça marche ?</h2>
+      <p>Cet outil compare vos positions à celles des 6 principaux candidats aux élections municipales de Strasbourg sur des sujets concrets : mobilité, logement, sécurité, finances, écologie, démocratie, tourisme et social.</p>
+      <p>Pour chaque thèse, répondez librement. Le résultat vous indique avec quel candidat vous avez le plus de points communs — sans être une recommandation de vote.</p>
+      <div class="intro-steps">
+        <div class="intro-step">
+          <div class="step-num">1</div>
+          <p>Répondez à 23 questions par D'accord, Neutre ou Pas d'accord</p>
+        </div>
+        <div class="intro-step">
+          <div class="step-num">2</div>
+          <p>Pondérez les thèses qui comptent le plus pour vous (×2)</p>
+        </div>
+        <div class="intro-step">
+          <div class="step-num">3</div>
+          <p>Consultez les résultats avec les positions sourcées de chaque candidat</p>
+        </div>
+      </div>
+      <button class="btn-start" onclick="startQuiz()">Commencer le questionnaire →</button>
+    </div>
+
+    <div class="intro-card" style="margin-top:16px;">
+      <h2>Pourquoi ces 6 candidat·es ?</h2>
+      <p>Strasbourg compte <strong>10 listes officiellement déposées</strong> pour ce scrutin
+        <a href="https://www.rcf.fr/articles/actualite/municipales-2026-a-strasbourg-10-candidats-se-presentent-pour-le-premier-tour" target="_blank" style="font-size:0.78rem;color:#888;">[RCF Alsace, mars 2026]</a>.
+        Cet outil se concentre sur les 6 dont il a été possible de documenter des positions publiques <em>suffisamment précises et vérifiables</em> sur chacun des thèmes abordés. Ce choix est <strong>purement méthodologique</strong>, sans orientation partisane d'aucune sorte.</p>
+      <p style="margin-top:14px;font-weight:600;font-size:0.9rem;">Pourquoi les 4 autres listes ne figurent-elles pas ?</p>
+      <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;font-size:0.87rem;color:#444;">
+        <li>
+          <strong>Cem Yoldas</strong> (« Strasbourg c'est nous », NPA-Anticapitaliste) —
+          Liste <strong>non déposée</strong> : le candidat a annoncé le 25 février 2026, veille de la date limite de dépôt en préfecture, renoncer à présenter sa liste pour protéger ses 67 colistier·es de menaces de mort reçues dans un contexte de tensions politiques.
+          <a href="https://pokaa.fr/2026/02/25/municipales-2026-pour-sa-securite-cem-yoldas-se-retire-des-elections-a-strasbourg/" target="_blank" style="font-size:0.78rem;color:#888;">[Pokaa, 25 fév. 2026]</a>
+          <a href="https://strasinfo.fr/2026/02/26/municipales-2026-a-strasbourg-une-liste-retiree-sous-la-menace-de-lextreme-droite/" target="_blank" style="font-size:0.78rem;color:#888;">[StrasInfo, 26 fév. 2026]</a>
+          — Cette liste n'a donc jamais été en lice et ne peut figurer dans l'outil.
+        </li>
+        <li>
+          <strong>Mohamed Sylla</strong> (Utiles 67 / PRG) —
+          Le programme, co-construit via des cahiers de doléances, structure ses priorités autour de 12 axes thématiques (emploi des jeunes, finances, gouvernance participative, logement…)
+          <a href="https://www.rue89strasbourg.com/programme-mohamed-sylla-strasbourg-378831" target="_blank" style="font-size:0.78rem;color:#888;">[Rue89 Strasbourg, jan. 2026]</a>
+          <a href="https://pokaa.fr/2025/11/17/municipales-2026-en-exclu-le-parti-utiles-67-devoile-12-mesures-pour-strasbourg/" target="_blank" style="font-size:0.78rem;color:#888;">[Pokaa, nov. 2025]</a>.
+          Ces axes ne permettent pas d'attribuer des positions tranchées sur la majorité des 23 thèses de cet outil (ex. taux de bio en cantine, gratuité de l'eau, encadrement des loyers, police municipale…) : le programme reste au niveau d'orientations générales plutôt que d'engagements chiffrés comparables aux autres candidat·es.
+        </li>
+        <li>
+          <strong>Louise Fève</strong> (Lutte Ouvrière) —
+          LO se présente à Strasbourg avec une liste intitulée « Le camp des travailleurs »
+          <a href="https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170" target="_blank" style="font-size:0.78rem;color:#888;">[Rue89 Strasbourg]</a>.
+          Le programme de LO est structuré autour de revendications de classe à portée nationale ; la presse locale n'a pas documenté de positions précises sur les thèses municipales spécifiques traitées dans cet outil (politique tarifaire de l'eau, encadrement Airbnb, tram nord, stationnement résident, etc.).
+        </li>
+        <li>
+          <strong>Clément Soubise</strong> (NPA-Révolutionnaires), <strong>Fahad Raja Muhammad</strong> (MPI), <strong>Eva Lacote</strong> (Parti des travailleurs), <strong>Neïla Boutghata</strong> (Engagé·es pour Strasbourg), <strong>Jean-Thierry Gangloff</strong> (Vision collective 67) —
+          Ces cinq listes sont mentionnées dans les sources générales sur les candidats
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_municipales_de_2026_%C3%A0_Strasbourg" target="_blank" style="font-size:0.78rem;color:#888;">[Wikipedia]</a>
+          <a href="https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" target="_blank" style="font-size:0.78rem;color:#888;">[CNews, fév. 2026]</a>
+          mais n'ont pas publié de programme détaillé sur les thèmes de cet outil avant sa conception, rendant impossible l'attribution de positions vérifiables et sourcées.
+        </li>
+      </ul>
+      <p style="margin-top:12px;font-size:0.82rem;color:#888;border-top:1px solid #eee;padding-top:10px;">
+        Ces absences ne reflètent aucun jugement sur la valeur de ces candidatures. Elles résultent uniquement du <strong>critère de vérifiabilité</strong> appliqué uniformément : seules les positions documentées par des sources de presse indépendantes (Rue89 Strasbourg, Pokaa, StrasInfo, France Bleu, Vert.eco, CNews) ont été retenues.
+      </p>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="screen-quiz">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="progress-label" id="progress-label">Question 1 / 23</div>
+
+    <div class="question-card" id="question-card">
+      <div class="question-theme" id="question-theme"></div>
+      <div class="question-number" id="question-number"></div>
+      <div class="question-text" id="question-text"></div>
+      <div class="question-docs" id="question-docs" style="display:none;"></div>
+      <div class="vote-buttons">
+        <button class="vote-btn agree" onclick="castVote('agree')">✓ D'accord</button>
+        <button class="vote-btn neutral" onclick="castVote('neutral')">— Neutre</button>
+        <button class="vote-btn disagree" onclick="castVote('disagree')">✗ Pas d'accord</button>
+      </div>
+      <div class="double-weight-row">
+        <label>
+          <input type="checkbox" id="double-weight" onchange="toggleDoubleWeight()">
+          Cette thèse est particulièrement importante pour moi (×2)
+        </label>
+      </div>
+    </div>
+
+    <div class="quiz-nav">
+      <button class="btn-nav secondary" id="btn-prev" onclick="prevQuestion()" disabled>← Précédent</button>
+      <button class="btn-skip" onclick="skipQuestion()">Passer cette thèse</button>
+      <button class="btn-nav primary" id="btn-next" onclick="nextQuestion()">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="screen-results">
+    <div class="results-header">
+      <h2>Vos résultats</h2>
+      <p>Concordance de vos réponses avec les positions des candidats</p>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('rankings')">Classement</button>
+      <button class="tab-btn" onclick="showTab('comparison')">Tableau comparatif</button>
+    </div>
+
+    <div id="tab-rankings">
+      <div id="results-list"></div>
+    </div>
+
+    <div id="tab-comparison" style="display:none">
+      <div class="comp-controls">
+        <h3>Sélectionner les candidats à comparer</h3>
+        <div class="cand-checkboxes" id="comp-checkboxes"></div>
+      </div>
+      <div class="comp-table-wrap">
+        <table class="comp-table" id="comp-table"></table>
+      </div>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn-action secondary" onclick="toggleReview()">✏️ Modifier mes réponses</button>
+      <button class="btn-action primary" onclick="restartQuiz()">↺ Recommencer</button>
+      <button class="btn-action secondary" onclick="window.print()">🖨 Imprimer</button>
+    </div>
+
+    <div id="review-panel" style="display:none;margin-top:24px;">
+      <div style="background:#f8f6f0;border:2px solid #c8b87a;border-radius:12px;padding:20px;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:14px;color:#1a2a4a;">✏️ Réviser mes réponses — cliquez sur une thèse pour la modifier</h3>
+        <div id="review-list"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>Outil citoyen non-partisan · Données issues des programmes officiels et de la presse locale (Rue89 Strasbourg, Pokaa, StrasInfo, Vert.eco, France Bleu, CNews) · Mars 2026</p>
+  <p style="margin-top:6px">Pas de recommandation de vote · <a href="#" onclick="showSources()">Voir toutes les sources</a></p>
+</footer>
+
+<script>
+// =============================================
+// DATA
+// =============================================
+const CANDIDATES = [
+  {
+    id: 'barseghian',
+    name: 'Jeanne Barseghian',
+    party: 'Les Écologistes · Maire sortante',
+    color: '#2E7D32',
+    positions: {}
+  },
+  {
+    id: 'trautmann',
+    name: 'Catherine Trautmann',
+    party: 'Parti Socialiste',
+    color: '#E91E63',
+    positions: {}
+  },
+  {
+    id: 'vetter',
+    name: 'Jean-Philippe Vetter',
+    party: 'Les Républicains',
+    color: '#1565C0',
+    positions: {}
+  },
+  {
+    id: 'joron',
+    name: 'Virginie Joron',
+    party: 'Rassemblement National',
+    color: '#0D47A1',
+    positions: {}
+  },
+  {
+    id: 'kobryn',
+    name: 'Florian Kobryn',
+    party: 'La France Insoumise',
+    color: '#B71C1C',
+    positions: {}
+  },
+  {
+    id: 'jakubowicz',
+    name: 'Pierre Jakubowicz',
+    party: 'Horizons (Centre)',
+    color: '#F57C00',
+    positions: {}
+  }
+];
+
+const THESES = [
+  // MOBILITY
+  {
+    id: 'T1', category: '🚋 Mobilité', label: 'Thèse 1',
+    text: 'La ville doit étendre le réseau de tramway vers le nord (Schiltigheim/Bischheim) dans le prochain mandat.',
+    docs: [
+      { title: 'Synthèse complète du projet tram nord — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/synthese-tram-nord-295011' },
+      { title: 'Convention citoyenne : le tracé revu — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tram-nord-convention-citoyenne-363109' },
+      { title: 'Tram nord, enjeu central des municipales 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' }
+    ]
+  },
+  {
+    id: 'T2', category: '🚋 Mobilité', label: 'Thèse 2',
+    text: 'La gratuité des transports en commun doit être étendue à de nouvelles catégories de population (seniors, jeunes, précaires).',
+    docs: [
+      { title: 'Mobilités à Strasbourg : ce que proposent les candidats — Pokaa', url: 'https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge/' },
+      { title: 'Gratuité des transports : enjeux et expériences en France — Vert.eco', url: 'https://vert.eco/articles/a-strasbourg-des-citoyens-tires-au-sort-ont-planche-sur-le-projet-de-nouvelle-ligne-de-tram-et-refusent-de-reduire-la-place-de-la-voiture' }
+    ]
+  },
+  {
+    id: 'T3', category: '🚋 Mobilité', label: 'Thèse 3',
+    text: 'La place de la voiture en centre-ville doit être davantage réduite au profit des piétons et des cyclistes.',
+    docs: [
+      { title: 'Place de la voiture en ville : enjeux et débats — Vert.eco', url: 'https://vert.eco/articles/a-strasbourg-des-citoyens-tires-au-sort-ont-planche-sur-le-projet-de-nouvelle-ligne-de-tram-et-refusent-de-reduire-la-place-de-la-voiture' },
+      { title: 'Barseghian : mobilités et 30 km/h — France Bleu', url: 'https://www.francebleu.fr/infos/transports/le-nouveau-tram-nord-entre-strasbourg-schiltigheim-passera-rue-du-general-de-gaulle-1638549345' }
+    ]
+  },
+  {
+    id: 'T4', category: '🚋 Mobilité', label: 'Thèse 4',
+    text: 'Le tarif du stationnement résident doit être abaissé par rapport au niveau actuel.',
+    docs: [
+      { title: 'Stationnement et mobilités dans la campagne 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Propositions mobilités de Trautmann — Pokaa', url: 'https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge/' }
+    ]
+  },
+  {
+    id: 'T5', category: '🚋 Mobilité', label: 'Thèse 5',
+    text: 'Les transports en commun doivent fonctionner 24h/24 le week-end.',
+    docs: [
+      { title: 'Candidats et leurs programmes mobilité — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  // HOUSING
+  {
+    id: 'T6', category: '🏠 Logement', label: 'Thèse 6',
+    text: 'La ville doit mettre en place l\'encadrement des loyers sur l\'ensemble de son territoire.',
+    docs: [
+      { title: 'Encadrement des loyers à Strasbourg : ce que ça changerait — StrasInfo', url: 'https://strasinfo.fr/2026/02/18/loyers-a-strasbourg-vous-allez-enfin-payer-moins-cher/' },
+      { title: 'Strasbourg peut-elle mettre en place l\'encadrement des loyers ? — PG67', url: 'https://www.pg67.fr/2025/11/strasbourg-a-quand-l-encadrement-des-loyers.html' },
+      { title: 'Motion de l\'Eurométropole sur l\'encadrement des loyers (2022) — Strasbourg.eu', url: 'https://www.strasbourg.eu/-/encadrement-loyers-justice-sociale' }
+    ]
+  },
+  {
+    id: 'T7', category: '🏠 Logement', label: 'Thèse 7',
+    text: 'La ville doit renforcer la réglementation sur les meublés touristiques de type Airbnb pour libérer des logements.',
+    docs: [
+      { title: 'Airbnb et logement : enjeux à Strasbourg — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' },
+      { title: 'Logement, enjeu de la campagne 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' }
+    ]
+  },
+  {
+    id: 'T8', category: '🏠 Logement', label: 'Thèse 8',
+    text: 'La ville doit avoir la capacité de réquisitionner des logements vacants.',
+    docs: [
+      { title: 'Logements vacants et réquisition en France : contexte juridique — Wikipedia', url: 'https://fr.wikipedia.org/wiki/%C3%89lections_municipales_de_2026_%C3%A0_Strasbourg' }
+    ]
+  },
+  // SECURITY
+  {
+    id: 'T9', category: '🔒 Sécurité', label: 'Thèse 9',
+    text: 'Les effectifs de la police municipale doivent être significativement augmentés.',
+    docs: [
+      { title: 'Sécurité : enjeu central des municipales 2026 — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Ce que proposent les candidats sur la sécurité — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  {
+    id: 'T10', category: '🔒 Sécurité', label: 'Thèse 10',
+    text: 'L\'arrêté anti-mendicité abrogé en 2020 doit être rétabli.',
+    docs: [
+      { title: 'Contexte : pourquoi Barseghian a abrogé l\'arrêté en 2020 — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/la-maire-de-strasbourg-annule-larrete-anti-mendicite-184485' },
+      { title: 'Explications sur l\'arrêté et son abrogation — Pokaa', url: 'https://pokaa.fr/2020/08/01/jeanne-barseghian-met-fin-a-larrete-anti-mendicite-agressive-de-strasbourg/' },
+      { title: 'Historique : l\'arrêté anti-mendicité de Strasbourg — France 3', url: 'https://france3-regions.franceinfo.fr/grand-est/bas-rhin/strasbourg-0/strasbourg-jeanne-barseghian-abroge-arrete-anti-mendicite-1858502.html' }
+    ]
+  },
+  {
+    id: 'T11', category: '🔒 Sécurité', label: 'Thèse 11',
+    text: 'La lutte contre les incivilités doit reposer principalement sur des sanctions renforcées plutôt que sur la prévention.',
+    docs: [
+      { title: 'Propreté et incivilités dans la campagne 2026 — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  // FINANCES
+  {
+    id: 'T12', category: '💰 Finances', label: 'Thèse 12',
+    text: 'La ville doit mener un audit indépendant de ses finances et réduire sa dette sans augmenter les impôts.',
+    docs: [
+      { title: 'Finances de Strasbourg : enjeux du mandat — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Jakubowicz sur les finances — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  {
+    id: 'T13', category: '💰 Finances', label: 'Thèse 13',
+    text: 'La taxe foncière ne doit pas augmenter durant le prochain mandat.',
+    docs: [
+      { title: 'Taxe foncière et finances municipales — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  // ECOLOGY
+  {
+    id: 'T14', category: '🌿 Écologie', label: 'Thèse 14',
+    text: 'La transition écologique doit rester un axe prioritaire de la politique municipale.',
+    docs: [
+      { title: 'Bilan écologique du mandat Barseghian — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Mesures écologie des candidats — Pokaa FACTU', url: 'https://pokaa.fr/2026/02/11/ecologie-a-strasbourg-quelles-sont-les-mesures-des-candidates-aux-municipales-2026/' }
+    ]
+  },
+  {
+    id: 'T15', category: '🌿 Écologie', label: 'Thèse 15',
+    text: 'La ville doit viser 75% de produits bio et locaux dans les cantines scolaires.',
+    docs: [
+      { title: 'Alimentation et cantines dans la campagne — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  {
+    id: 'T16', category: '🌿 Écologie', label: 'Thèse 16',
+    text: 'Les 30 premiers mètres cubes d\'eau annuels doivent être gratuits pour chaque foyer.',
+    docs: [
+      { title: 'Eau gratuite : comment ça fonctionne ? (exemples Dunkerque, Grenoble) — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
+      { title: 'Propositions eau et écologie des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  // DEMOCRACY
+  {
+    id: 'T17', category: '🏛 Démocratie', label: 'Thèse 17',
+    text: 'Les élus de quartier doivent disposer d\'un budget propre et de délégations renforcées.',
+    docs: [
+      { title: 'Démocratie participative : bilan du mandat et propositions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  {
+    id: 'T18', category: '🏛 Démocratie', label: 'Thèse 18',
+    text: 'Les citoyens doivent pouvoir déclencher un référendum municipal par voie de pétition.',
+    docs: [
+      { title: 'Démocratie locale et référendum : propositions des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  {
+    id: 'T19', category: '🏛 Démocratie', label: 'Thèse 19',
+    text: 'Les habitants non-français doivent pouvoir participer aux consultations citoyennes locales.',
+    docs: [
+      { title: 'Droit de vote des étrangers en France : état du débat — Wikipedia', url: 'https://fr.wikipedia.org/wiki/Droit_de_vote_des_%C3%A9trangers_en_France' },
+      { title: 'Participation citoyenne et résidents étrangers : ce que proposent les candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  // TOURISM
+  {
+    id: 'T20', category: '🌍 Tourisme', label: 'Thèse 20',
+    text: 'La ville doit mieux réguler le tourisme de masse pour préserver la qualité de vie des habitants.',
+    docs: [
+      { title: 'Marché de Noël et tourisme à Strasbourg : enjeux — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' },
+      { title: 'Tourisme de masse : les propositions des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  {
+    id: 'T21', category: '🌍 Tourisme', label: 'Thèse 21',
+    text: 'Strasbourg doit renforcer son rôle de capitale européenne avec des événements dédiés.',
+    docs: [
+      { title: 'Strasbourg capitale européenne : enjeux et ambitions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+    ]
+  },
+  // SOCIAL
+  {
+    id: 'T22', category: '⚖️ Social', label: 'Thèse 22',
+    text: 'La ville doit créer une mutuelle communale pour faciliter l\'accès aux soins.',
+    docs: [
+      { title: 'Mutuelles communales : comment ça fonctionne ? (exemples français) — Pokaa', url: 'https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/' },
+      { title: 'Propositions sociales des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  },
+  {
+    id: 'T23', category: '⚖️ Social', label: 'Thèse 23',
+    text: 'Un revenu minimum mensuel doit être expérimenté pour les jeunes sans ressources.',
+    docs: [
+      { title: 'Propositions sociales pour les jeunes — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
+    ]
+  }
+];
+
+// Candidate stances : 'accord' | 'neutre' | 'desaccord' | null (non documenté)
+// Format: { stance, source_text, source_url }
+const POSITIONS = {
+  barseghian: {
+    T1:  { stance: 'agree',    excerpt: "Extension du tramway entre Strasbourg et le quartier des Écrivains à Schiltigheim", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T2:  { stance: 'agree',    excerpt: "Gratuité des transports CTS et Vélhop pour les 18-25 ans sans ressources et les ménages les plus modestes", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T3:  { stance: 'agree',    excerpt: "Plus de place pour le vélo, les piétons et la végétation sur les grandes artères", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
+    T4:  { stance: 'agree',    excerpt: "Stationnement résident à partir de 5€/mois avec tranches progressives", url: "https://pokaa.fr/2026/01/07/municipales-2026-jeanne-barseghian-devoile-12-mesures" },
+    T5:  { stance: 'agree',    excerpt: "Réseau de bus étendu fonctionnant 24h/24 et 7j/7", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers sur toute la ville, dès que possible + brigade municipale du logement", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T7:  { stance: 'agree',    excerpt: "Régulation des meublés de tourisme type Airbnb", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T8:  { stance: 'neutral',    excerpt: "Dispositif \"Mieux relouer mon logement vacant\" (260 logements captés) mais pas de réquisition explicite", url: "https://www.rue89strasbourg.com/strasbourg-logements-vides-vacants-159699" },
+    T9:  { stance: 'disagree', excerpt: "Pas de doublement des effectifs annoncé ; priorité à la prévention", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T10: { stance: 'disagree', excerpt: "La maire sortante a abrogé l'arrêté anti-mendicité en 2020 ; pas de retour annoncé", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T11: { stance: 'disagree', excerpt: "Approche fondée sur la prévention et la politique sociale plutôt que les sanctions", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T12: { stance: 'disagree', excerpt: "Pas d'audit proposé ; défend le bilan financier du mandat écologiste", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T13: { stance: 'neutral',    excerpt: "Pas d'engagement explicite de gel de la taxe foncière dans le programme", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T14: { stance: 'agree',    excerpt: "La transition écologique est le fil conducteur de tout le programme", url: "https://www.rue89strasbourg.com/jeanne-barseghian-2026-mobilites-pietons-380928" },
+    T15: { stance: 'agree',    excerpt: "75% de produits bio, locaux et de saison dans les assiettes des écoliers + cuisines centrales municipales", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T16: { stance: 'agree',    excerpt: "30 premiers mètres cubes d'eau gratuits pour tous les foyers + tarification progressive", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T17: { stance: 'agree',    excerpt: "Élus de quartier avec budget dédié, droit d'interpellation citoyen, conseils d'urbanisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T18: { stance: 'agree',    excerpt: "Pétitions pouvant déclencher des référendums, ouverts aux résidents étrangers et aux plus de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T19: { stance: 'agree',    excerpt: "Référendums ouverts aux résidents étrangers et aux jeunes de 16 ans", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T20: { stance: 'agree',    excerpt: "Régulation des meublés de tourisme Airbnb pour préserver le parc de logements", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T21: { stance: 'agree',    excerpt: "Festival estival \"L'été à Strasbourg\" de juin à septembre, rénovation Opéra national du Rhin", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T22: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour offrir une couverture complémentaire à prix abordable", url: "https://strasinfo.fr/2026/02/27/municipales-2026-barseghian-candidate-a-sa-reelection-et-elle-promet-beaucoup-plus/" },
+    T23: { stance: 'agree',    excerpt: "Revenu pour les jeunes parmi les dispositifs de gratuité et tarification solidaire annoncés", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" }
+  },
+  trautmann: {
+    T1:  { stance: 'agree',    excerpt: "Réaliser le projet du Tram Nord, vers Schiltigheim et Bischheim", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
+    T2:  { stance: 'agree',    excerpt: "Gratuité des transports pour les + de 65 ans ; tarifs réduits pour d'autres catégories", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
+    T3:  { stance: 'neutral',    excerpt: "Veut \"rééquilibrer\" sans supprimer la voiture ; critique les aménagements actuels trop radicaux", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
+    T4:  { stance: 'agree',    excerpt: "Baisse du stationnement résident entre 5€ et 20€/mois selon zones et quotient familial + gratuité des 30 premières minutes", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
+    T5:  { stance: 'neutral',    excerpt: "Pas de position explicite sur le 24h/24 ; amélioration des fréquences annoncée", url: "https://pokaa.fr/2026/02/10/municipales-2026-en-voiture-ou-en-tram-trautmann-veut-un-strasbourg-qui-bouge" },
+    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers figurait dans son programme 2022 et est réaffirmé", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T7:  { stance: 'neutral',    excerpt: "Position non explicitement détaillée sur Airbnb dans les sources disponibles", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de réquisition explicite dans les sources ; politique de remise sur marché favorisée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T9:  { stance: 'agree',    excerpt: "Renforcer la présence de la police municipale sur le terrain avec des patrouilles régulières + brigade dédiée aux transports", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T10: { stance: 'disagree', excerpt: "Pas de proposition de rétablissement de l'arrêté anti-mendicité dans son programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T11: { stance: 'neutral',    excerpt: "Aborde la sécurité par la présence policière ET les politiques de prévention sociale", url: "https://pokaa.fr/2025/12/12/municipales-2026-a-strasbourg-catherine-trautmann-veut-simposer-sur-la-securite" },
+    T12: { stance: 'agree',    excerpt: "Audit financier des finances de la ville annoncé dès l'annonce de candidature", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T13: { stance: 'neutral',    excerpt: "Promet de ne pas \"charger la fiscalité\" mais sans engagement ferme de gel de la taxe foncière", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T14: { stance: 'agree',    excerpt: "Trajectoire zéro carbone à l'horizon 2050, objectifs 3-30-300 arbres (3 arbres visibles, 30% couverture, espace vert \u003c300m)", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T15: { stance: 'neutral',    excerpt: "Gratuité des fournitures scolaires annoncée, mais objectif bio/local des cantines non chiffré", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T16: { stance: 'agree',    excerpt: "Gratuité des 15 premiers m3 d'eau proposée", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T17: { stance: 'agree',    excerpt: "Adjoints de quartier avec pouvoir de décision sur les projets locaux", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T18: { stance: 'neutral',    excerpt: "Démocratie participative évoquée mais sans mécanisme de référendum par pétition explicite", url: "https://www.francebleu.fr/grand-est/alsace-cea/strasbourg/municipales-2026-a-strasbourg-catherine-trautmann-revele-son-programme-7398466" },
+    T19: { stance: 'neutral',    excerpt: "Position non documentée dans les sources disponibles", url: "https://pokaa.fr/2026/01/14/municipales-2026-a-strasbourg-catherine-trautmann-ps-mise-sur-le-pouvoir-de-vivre" },
+    T20: { stance: 'neutral',    excerpt: "Veut \"sauver le centre-ville\" en renforçant l'attractivité commerciale ; régulation tourisme non détaillée", url: "https://pokaa.fr/2025/10/10/municipales-2026-a-strasbourg-catherine-trautmann-candidate-pour-redresser-la-ville/" },
+    T21: { stance: 'agree',    excerpt: "Concentrer les dépenses culturelles pour augmenter l'impact des événements existants", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T22: { stance: 'agree',    excerpt: "Création d'une mutuelle communale pour faciliter l'accès aux soins", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T23: { stance: 'neutral',    excerpt: "Pas de revenu jeunes explicite dans les sources ; met plutôt l'accent sur les fournitures gratuites", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" }
+  },
+  vetter: {
+    T1:  { stance: 'neutral',    excerpt: "Veut \"repenser la ligne\" du tram nord et un 'Ring' reliant les quartiers ; critique le tracé actuel", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T2:  { stance: 'agree',    excerpt: "Abonnement CTS à 1€/mois pour les 65 ans et plus, financé par une meilleure gestion des deniers publics", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T3:  { stance: 'disagree', excerpt: "Veut corriger les aménagements qui \"paralysent la circulation\" ; fluidifier les feux tricolores", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T4:  { stance: 'agree',    excerpt: "Stationnement gratuit entre 12h et 14h pour soutenir les commerces de proximité", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur le 24h/24 des transports", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T6:  { stance: 'disagree', excerpt: "Pas de proposition d'encadrement des loyers dans son programme ; politique de logement axée sur la rénovation", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T7:  { stance: 'neutral',    excerpt: "Pas de position explicite sur la réglementation Airbnb dans les sources disponibles", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T8:  { stance: 'agree',    excerpt: "Politique du logement centrée sur la remise sur le marché des logements vacants", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T9:  { stance: 'agree',    excerpt: "Doublement des effectifs de la police municipale sur l'ensemble du mandat", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T10: { stance: 'agree',    excerpt: "Code de la rue permettant de sanctionner les comportements dangereux, incluant la mendicité agressive", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T11: { stance: 'agree',    excerpt: "Sanctions renforcées contre cyclistes imprudents, rodéos motorisés, incivilités", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T12: { stance: 'agree',    excerpt: "Situation financière de Strasbourg qualifiée d'\"alarmante\" ; chaque mesure sera chiffrée et évaluée", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T13: { stance: 'agree',    excerpt: "Aucune augmentation d'impôts ni de taxes durant le mandat — promesse ferme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T14: { stance: 'neutral',    excerpt: "S'oppose à \"l'opposition stérile\" entre écologie et économie mais ne fait pas de la transition écologique une priorité explicite", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur l'objectif 75% bio dans les cantines", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme ; finances de la ville au cœur de ses préoccupations", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T17: { stance: 'neutral',    excerpt: "Gouvernance de proximité évoquée sans précision sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T18: { stance: 'agree',    excerpt: "Tirage au sort mensuel de 100 Strasbourgeois + votation citoyenne pour les grands projets", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation citoyenne des résidents étrangers", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T20: { stance: 'disagree', excerpt: "Veut renforcer l'attractivité et l'animation du centre-ville ; orientation pro-tourisme", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T21: { stance: 'agree',    excerpt: "Défend l'identité alsacienne et européenne de Strasbourg ; musées gratuits le dimanche, BNU 24h/24", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T22: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité à la gestion des dépenses existantes", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" },
+    T23: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; priorité à la baisse de la fiscalité", url: "https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer" }
+  },
+  joron: {
+    T1:  { stance: 'neutral',    excerpt: "Pas de position documentée sur le tram nord spécifiquement", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T2:  { stance: 'agree',    excerpt: "Transports à tarif réduit pour étudiants et retraités", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T3:  { stance: 'disagree', excerpt: "Veut redonner de la place aux voitures et aux commerces en centre-ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T4:  { stance: 'agree',    excerpt: "Parkings gratuits à midi et le samedi dans le centre-ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur les transports 24h/24", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T6:  { stance: 'disagree', excerpt: "Pas d'encadrement des loyers dans son programme ; pas de mention dans les sources disponibles", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T7:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T9:  { stance: 'agree',    excerpt: "50 policiers municipaux supplémentaires + brigade nocturne", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T10: { stance: 'agree',    excerpt: "Remettre en place l'arrêté anti-mendicité abrogé par la maire sortante en 2020", url: "https://www.francebleu.fr/infos/politique/municipales-2026-a-strasbourg-qui-sont-les-candidats-declares-aux-elections-4985471" },
+    T11: { stance: 'agree',    excerpt: "Sécurité et propreté urbaine en axes centraux de campagne ; sanctions au cœur du dispositif", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T12: { stance: 'agree',    excerpt: "Audit sur les finances \"pour savoir où va l'argent des Strasbourgeois\"", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T13: { stance: 'agree',    excerpt: "Engagement de gestion rigoureuse sans hausse de la fiscalité locale", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T14: { stance: 'disagree', excerpt: "Critique la politique écologiste comme cause de la dégradation de la vie en ville", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T17: { stance: 'neutral',    excerpt: "Pas de position documentée sur les budgets de quartier", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T18: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T19: { stance: 'disagree', excerpt: "Le RN s'oppose généralement à l'extension des droits politiques des résidents étrangers", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T20: { stance: 'neutral',    excerpt: "Veut faire revenir les touristes plutôt que les réguler", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T21: { stance: 'agree',    excerpt: "Strasbourg comme vitrine nationale et européenne : valorisation du Marché de Noël et des événements", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T22: { stance: 'disagree', excerpt: "Pas de mutuelle communale dans son programme ; priorité aux dépenses sécuritaires", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" },
+    T23: { stance: 'disagree', excerpt: "Pas de revenu jeunes dans son programme ; critique de l'assistanat", url: "https://strasinfo.fr/2026/02/22/municipales-2026-virginie-joron-lance-sauvons-strasbourg" }
+  },
+  kobryn: {
+    T1:  { stance: 'agree',    excerpt: "Soutien à l'extension du réseau de transports en commun", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T2:  { stance: 'agree',    excerpt: "Gratuité des transports pour les moins de 25 ans, les personnes au RSA ou sans domicile fixe", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T3:  { stance: 'agree',    excerpt: "Réduction de la place de la voiture ; interdiction progressive des panneaux publicitaires", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T4:  { stance: 'agree',    excerpt: "Stationnement par tranches de revenus : gratuité pour les ménages précaires, tarif doublé pour les SUV", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T5:  { stance: 'agree',    excerpt: "Bus 24h/24 parmi les premières mesures annoncées", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T6:  { stance: 'agree',    excerpt: "Encadrement des loyers parmi les mesures phares du programme", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T7:  { stance: 'agree',    excerpt: "Réglementation stricte d'Airbnb", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T8:  { stance: 'agree',    excerpt: "Réquisition des logements vacants évoquée dans son programme de gauche radicale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T9:  { stance: 'disagree', excerpt: "Priorité à la lutte contre les discriminations et aux droits civiques plutôt qu'au renforcement policier", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T10: { stance: 'disagree', excerpt: "Contre les arrêtés punitifs ciblant les personnes précaires", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T11: { stance: 'disagree', excerpt: "Approche axée sur la justice sociale ; récépissé pour chaque contrôle policier pour lutter contre les discriminations", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T12: { stance: 'neutral',    excerpt: "Contrôle accru des délégations de service public ; pas d'audit au sens libéral du terme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T13: { stance: 'neutral',    excerpt: "Pas d'engagement explicite sur la taxe foncière ; financement par taxation des SUV et grands patrimoines", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T14: { stance: 'agree',    excerpt: "Transition écologique et justice sociale comme axes fondamentaux du programme", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T15: { stance: 'agree',    excerpt: "Alimentation de qualité et souveraineté alimentaire dans les cantines publiques", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T16: { stance: 'agree',    excerpt: "Gratuité des 30 premiers mètres cubes d'eau de chaque foyer (première liste à proposer cette mesure)", url: "https://www.cnews.fr/france/2026-02-22/municipales-2026-qui-sont-les-candidats-la-mairie-de-strasbourg-1819696" },
+    T17: { stance: 'agree',    excerpt: "Démocratie participative et pouvoirs de quartier renforcés", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T18: { stance: 'agree',    excerpt: "Référendum révocatoire (20% corps électoral) + référendum d'initiative locale", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T19: { stance: 'agree',    excerpt: "Récépissé pour chaque contrôle et lutte contre les discriminations ; programme inclusif pour tous les résidents", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T20: { stance: 'agree',    excerpt: "Marché de Noël payant pour les non-résidents de l'Eurométropole le week-end pour réguler l'afflux", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T21: { stance: 'neutral',    excerpt: "Veut repenser les événements culturels sans \"course au gigantisme\" (ex : rénovation de l'Opéra)", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T22: { stance: 'agree',    excerpt: "\"Strasbourg doit être une ville qui prend soin de tout le monde\" — santé accessible pour tous", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" },
+    T23: { stance: 'agree',    excerpt: "Revenu pour les jeunes précaires parmi les mesures sociales phares", url: "https://www.rue89strasbourg.com/programme-florian-kobryn-municipales-2026-strasbourg-365805" }
+  },
+  jakubowicz: {
+    T1:  { stance: 'disagree', excerpt: "Faisait partie de l'opposition qui a critiqué le tracé actuel du Tram Nord", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T2:  { stance: 'neutral',    excerpt: "Pas de proposition explicite de gratuité des transports ; veut améliorer les tarifs pour les professionnels", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T3:  { stance: 'neutral',    excerpt: "Propose d'enterrer ou couvrir la M35 pour réconcilier voiture et espace public", url: "https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/" },
+    T4:  { stance: 'agree',    excerpt: "Forfait de 15 euros pour les professionnels et les responsables d'associations", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T5:  { stance: 'neutral',    excerpt: "Pas de position documentée sur les transports 24h/24", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T6:  { stance: 'neutral',    excerpt: "Pas de mention d'encadrement des loyers dans les sources disponibles", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T7:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réglementation Airbnb", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T8:  { stance: 'neutral',    excerpt: "Pas de position documentée sur la réquisition des logements vacants", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T9:  { stance: 'agree',    excerpt: "Renforcement de la sécurité parmi ses axes de campagne", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T10: { stance: 'neutral',    excerpt: "Pas de position documentée sur le rétablissement de l'arrêté anti-mendicité", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T11: { stance: 'neutral',    excerpt: "Approche pragmatique sur la sécurité ; position entre prévention et sanctions", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T12: { stance: 'agree',    excerpt: "Moins de \"dépenses superflues\" et une \"pause fiscale\" pour les ménages et les entreprises", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T13: { stance: 'agree',    excerpt: "Pause fiscale annoncée — engagement de ne pas augmenter la taxe foncière", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T14: { stance: 'neutral',    excerpt: "Approche pragmatique de la transition écologique sans en faire un axe central", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T15: { stance: 'neutral',    excerpt: "Pas de position documentée sur les cantines bio/local", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T16: { stance: 'disagree', excerpt: "Pas de proposition d'eau gratuite dans son programme centrist", url: "https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo" },
+    T17: { stance: 'neutral',    excerpt: "Approche par délégués de quartier issus de collectifs locaux mais sans budget dédié précisé", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T18: { stance: 'neutral',    excerpt: "Pas de position documentée sur les référendums par pétition", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T19: { stance: 'neutral',    excerpt: "Pas de position documentée sur la participation des non-français", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T20: { stance: 'neutral',    excerpt: "Veut renforcer l'attractivité du centre-ville ; position équilibrée sur le tourisme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T21: { stance: 'agree',    excerpt: "Strasbourg capitale européenne : renforcement des événements et du rayonnement international", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T22: { stance: 'neutral',    excerpt: "Pas de mutuelle communale explicite dans les sources disponibles", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" },
+    T23: { stance: 'disagree', excerpt: "Approche libérale centriste ; pas de revenu jeunes dans son programme", url: "https://www.rue89strasbourg.com/tag/elections-municipales-2026" }
+  }
+};
+
+// =============================================
+// INJECT POSITIONS
+// =============================================
+CANDIDATES.forEach(c => { c.positions = POSITIONS[c.id] || {}; });
+
+// =============================================
+// STATE
+// =============================================
+let currentIndex = 0;
+const userAnswers = {}; // T1 => { vote: 'agree'|'neutral'|'disagree'|'skip', double: bool }
+let selectedCandidates = new Set(['barseghian', 'trautmann', 'vetter']);
+
+// =============================================
+// QUIZ LOGIC
+// =============================================
+function startQuiz() {
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-quiz').style.display = 'block';
+  currentIndex = 0;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = THESES[currentIndex];
+  document.getElementById('question-theme').textContent = q.category;
+  document.getElementById('question-number').textContent = q.label;
+  document.getElementById('question-text').textContent = q.text;
+
+  // Documentation links
+  const docsEl = document.getElementById('question-docs');
+  if (q.docs && q.docs.length > 0) {
+    docsEl.innerHTML = '<span class="docs-label">📖 En savoir plus :</span> ' +
+      q.docs.map(d => `<a href="${d.url}" target="_blank" rel="noopener" class="doc-link">${d.title}</a>`).join('');
+    docsEl.style.display = 'block';
+  } else {
+    docsEl.style.display = 'none';
+  }
+
+  // Vote buttons
+  document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
+  const saved = userAnswers[q.id];
+  if (saved && saved.vote !== 'skip') {
+    document.querySelector(`.vote-btn.${saved.vote}`)?.classList.add('selected');
+  }
+  const dw = document.getElementById('double-weight');
+  dw.checked = saved?.double || false;
+
+  // Progress bar
+  const pct = Math.round((currentIndex / THESES.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Question ${currentIndex + 1} / ${THESES.length}`;
+
+  // Navigation buttons
+  document.getElementById('btn-prev').disabled = currentIndex === 0;
+  document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Suivant →';
+}
+
+function castVote(type) {
+  const q = THESES[currentIndex];
+  const existing = userAnswers[q.id] || {};
+  userAnswers[q.id] = { vote: type, double: existing.double || false };
+  document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
+}
+
+function toggleDoubleWeight() {
+  const q = THESES[currentIndex];
+  const dw = document.getElementById('double-weight').checked;
+  if (userAnswers[q.id]) userAnswers[q.id].double = dw;
+  else userAnswers[q.id] = { vote: 'skip', double: dw };
+}
+
+function nextQuestion() {
+  const q = THESES[currentIndex];
+  if (!userAnswers[q.id]) userAnswers[q.id] = { vote: 'neutral', double: false };
+
+  if (reviewMode) {
+    // Return to results after editing
+    reviewMode = false;
+    document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Suivant →';
+    document.getElementById('screen-quiz').style.display = 'none';
+    document.getElementById('screen-results').style.display = 'block';
+    showResults();
+    setTimeout(function() {
+      buildReviewList();
+      document.getElementById('review-panel').style.display = 'block';
+      document.getElementById('review-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  } else if (currentIndex === THESES.length - 1) {
+    showResults();
+  } else {
+    currentIndex++;
+    renderQuestion();
+  }
+}
+
+function prevQuestion() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    renderQuestion();
+  }
+}
+
+function skipQuestion() {
+  const q = THESES[currentIndex];
+  userAnswers[q.id] = { vote: 'skip', double: false };
+  if (currentIndex < THESES.length - 1) {
+    currentIndex++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+// =============================================
+// SCORE CALCULATION
+// =============================================
+function calcScore(candidateId) {
+  let score = 0, maxScore = 0;
+
+  THESES.forEach(t => {
+    const ua = userAnswers[t.id];
+    if (!ua || ua.vote === 'skip') return;
+    const cp = POSITIONS[candidateId]?.[t.id]?.stance;
+    if (!cp) return;
+
+    const weight = ua.double ? 2 : 1;
+    maxScore += 2 * weight;
+
+    if (ua.vote === cp) score += 2 * weight;
+    else if (ua.vote === 'neutral' || cp === 'neutral') score += 1 * weight;
+    // else: 0 points
+  });
+
+  return maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+}
+
+// =============================================
+// RESULTS
+// =============================================
+function showResults() {
+  document.getElementById('screen-quiz').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+
+  const scores = CANDIDATES.map(c => ({
+    ...c,
+    score: calcScore(c.id)
+  })).sort((a, b) => b.score - a.score);
+
+  const list = document.getElementById('results-list');
+  list.innerHTML = '';
+
+  scores.forEach((c, i) => {
+    const div = document.createElement('div');
+    div.className = 'candidate-result' + (i === 0 ? ' top-1' : '');
+    div.innerHTML = `
+      <div class="cand-header" onclick="toggleDetail('detail-${c.id}', this)">
+        <div class="cand-rank" style="background:${i===0?'var(--gold)':c.color}">${i+1}</div>
+        <div class="cand-info">
+          <div class="cand-name">${c.name}</div>
+          <div class="cand-party">${c.party}</div>
+        </div>
+        <div class="cand-score-wrap">
+          <div class="cand-score-pct" style="color:${c.color}">${c.score}%</div>
+          <div class="cand-score-label">de concordance</div>
+        </div>
+        <button class="toggle-detail" id="toggle-${c.id}">Positions</button>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-bg">
+          <div class="score-bar-fill" style="background:${c.color};width:0%" id="bar-${c.id}"></div>
+        </div>
+      </div>
+      <div class="cand-detail" id="detail-${c.id}">
+        ${buildDetailHTML(c)}
+      </div>
+    `;
+    list.appendChild(div);
+    // Animate score bar
+    setTimeout(() => {
+      document.getElementById(`bar-${c.id}`).style.width = c.score + '%';
+    }, 100 + i * 150);
+  });
+
+  buildComparisonTable();
+  buildCompCheckboxes(scores);
+}
+
+function buildDetailHTML(candidate) {
+  let html = '<div class="candidate-positions">';
+  THESES.forEach(t => {
+    const ua = userAnswers[t.id];
+    if (!ua || ua.vote === 'skip') return;
+    const cp = POSITIONS[candidate.id]?.[t.id];
+    if (!cp) return;
+
+    const match = ua.vote === cp.stance;
+    const rowClass = match ? 'match' : (ua.vote !== 'neutral' && cp.stance !== 'neutral' ? 'mismatch' : '');
+
+    const icons = { agree: '✓', neutral: '–', disagree: '✗' };
+    const userIcon = icons[ua.vote] || '?';
+    const candStance = cp.stance;
+    const posClass = 'pos-' + candStance;
+    const posLabel = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord" }[candStance] || '?';
+
+    html += `
+      <div class="position-row ${rowClass}">
+        <div class="pos-icon">${match ? '✅' : (rowClass === 'mismatch' ? '❌' : '🟡')}</div>
+        <div class="pos-question-text">
+          <strong>${t.label}</strong>
+          ${t.text}
+        </div>
+        <div class="pos-candidate-stance ${posClass}">${posLabel}</div>
+        <div class="pos-source">
+          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  return html;
+}
+
+function toggleDetail(id, header) {
+  const detail = document.getElementById(id);
+  const btn = header.querySelector('.toggle-detail');
+  detail.classList.toggle('open');
+  btn?.classList.toggle('open');
+}
+
+// =============================================
+// COMPARISON TABLE
+// =============================================
+function buildCompCheckboxes(scores) {
+  const wrap = document.getElementById('comp-checkboxes');
+  wrap.innerHTML = '';
+  scores.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'cand-check-btn' + (selectedCandidates.has(c.id) ? ' active' : '');
+    btn.textContent = c.name.split(' ')[1]; // Last name only
+    btn.onclick = () => {
+      if (selectedCandidates.has(c.id)) selectedCandidates.delete(c.id);
+      else selectedCandidates.add(c.id);
+      btn.classList.toggle('active');
+      buildComparisonTable();
+    };
+    wrap.appendChild(btn);
+  });
+}
+
+function buildComparisonTable() {
+  const table = document.getElementById('comp-table');
+  if (!table) return;
+  const candIds = [...selectedCandidates];
+  const cands = candIds.map(id => CANDIDATES.find(c => c.id === id)).filter(Boolean);
+
+  let html = '<thead><tr><th class="these-col">Thèse</th>';
+  cands.forEach(c => { html += `<th style="color:white;background:${c.color}">${c.name.split(' ').pop()}</th>`; });
+  html += '</tr></thead><tbody>';
+
+  let currentTheme = '';
+  THESES.forEach(t => {
+    if (t.category !== currentTheme) {
+      currentTheme = t.category;
+      html += `<tr class="theme-row"><td colspan="${cands.length + 1}">${t.category}</td></tr>`;
+    }
+    html += `<tr><td style="font-size:12px">${t.text}</td>`;
+    cands.forEach(c => {
+      const pos = POSITIONS[c.id]?.[t.id]?.stance;
+      if (pos === 'agree') html += '<td class="cell-agree">✓</td>';
+      else if (pos === 'neutral') html += '<td class="cell-neutral">—</td>';
+      else if (pos === 'disagree') html += '<td class="cell-disagree">✗</td>';
+      else html += '<td class="cell-unknown">?</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function showTab(tab) {
+  document.getElementById('tab-rankings').style.display = tab === 'resultats' ? 'block' : 'none';
+  document.getElementById('tab-comparison').style.display = tab === 'comparaison' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', (i === 0 && tab === 'resultats') || (i === 1 && tab === 'comparaison'));
+  });
+  if (tab === 'comparison') buildComparisonTable();
+}
+
+function restartQuiz() {
+  Object.keys(userAnswers).forEach(k => delete userAnswers[k]);
+  currentIndex = 0;
+  reviewMode = false;
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('review-panel').style.display = 'none';
+  document.getElementById('btn-next').textContent = 'Suivant →';
+  document.getElementById('screen-intro').style.display = 'block';
+}
+
+// =============================================
+// ANSWER REVIEW
+// =============================================
+let reviewMode = false;
+
+function toggleReview() {
+  const panel = document.getElementById('review-panel');
+  const isVisible = panel.style.display !== 'none';
+  if (isVisible) {
+    panel.style.display = 'none';
+  } else {
+    buildReviewList();
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function buildReviewList() {
+  const container = document.getElementById('review-list');
+  const icons = { agree: '✓', neutral: '—', disagree: '✗', skip: '↷' };
+  const labels = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord", skip: 'Passée' };
+  const colors = { agree: '#2E7D32', neutral: '#888', disagree: '#c62828', skip: '#999' };
+
+  let html = '';
+  const themes = [...new Set(THESES.map(t => t.category))];
+  themes.forEach(theme => {
+    const questionsForTheme = THESES.filter(t => t.category === theme);
+    html += '<div style="margin-bottom:14px;">';
+    html += '<div style="font-size:0.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#888;margin-bottom:6px;padding-left:4px;">' + theme + '</div>';
+    questionsInTheme.forEach(q => {
+      const ua = userAnswers[q.id];
+      const vote = ua ? ua.vote : 'skip';
+      const isDouble = ua ? (ua.double || false) : false;
+      const color = colors[vote];
+      const label = labels[vote];
+      const icon = icons[vote];
+      const doubleTag = isDouble ? ' &nbsp;<span style="color:#c8b87a;font-weight:700;">×2</span>' : '';
+      html += '<div onclick="editQuestion(\'' + q.id + '\')" style="display:flex;align-items:center;gap:10px;padding:9px 12px;margin-bottom:5px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid #e0d8c0;transition:background .15s;" onmouseover="this.style.background=\'#fdf7e8\'" onmouseout="this.style.background=\'#fff\'">';
+      html += '<div style="width:28px;height:28px;border-radius:50%;background:' + color + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">' + icon + '</div>';
+      html += '<div style="flex:1;min-width:0;">';
+      html += '<div style="font-size:0.82rem;color:#333;line-height:1.35;">' + q.text + '</div>';
+      html += '<div style="font-size:0.72rem;color:' + color + ';font-weight:600;margin-top:2px;">' + label + doubleTag + '</div>';
+      html += '</div>';
+      html += '<div style="font-size:0.75rem;color:#aaa;flex-shrink:0;">modifier ›</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+function editQuestion(questionId) {
+  const idx = THESES.findIndex(q => q.id === questionId);
+  if (idx === -1) return;
+  reviewMode = true;
+  currentIndex = idx;
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('review-panel').style.display = 'none';
+  document.getElementById('screen-quiz').style.display = 'block';
+  document.getElementById('btn-next').textContent = 'Valider et retour aux résultats →';
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+
+function showSources() {
+  const sources = [];
+  CANDIDATES.forEach(c => {
+    Object.values(POSITIONS[c.id] || {}).forEach(p => {
+      if (p.url && !sources.includes(p.url)) sources.push(p.url);
+    });
+  });
+  const msg = 'Sources utilisées :\n\n' + sources.join('\n');
+  alert(msg);
+  return false;
+}
+</script>
+</body>
+</html>
