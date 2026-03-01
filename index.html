@@ -1418,7 +1418,7 @@ function renderQuestion() {
 
   // Navigation buttons
   document.getElementById('btn-prev').disabled = currentIndex === 0;
-  document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Passer';
+  updateNextLabel();
 }
 
 function castVote(type) {
@@ -1427,6 +1427,14 @@ function castVote(type) {
   userAnswers[q.id] = { vote: type, double: existing.double || false };
   document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
   document.querySelector(`.vote-btn.${type}`)?.classList.add('selected');
+  updateNextLabel();
+}
+
+function updateNextLabel() {
+  const q = THESES[currentIndex];
+  const isLast = currentIndex === THESES.length - 1;
+  const hasVote = userAnswers[q.id] && userAnswers[q.id].vote !== 'skip';
+  document.getElementById('btn-next').textContent = isLast ? 'Voir les résultats →' : (hasVote ? 'Suivant →' : 'Passer');
 }
 
 function toggleDoubleWeight() {
@@ -1443,7 +1451,7 @@ function nextQuestion() {
   if (reviewMode) {
     // Return to results after editing
     reviewMode = false;
-    document.getElementById('btn-next').textContent = currentIndex === THESES.length - 1 ? 'Voir les résultats →' : 'Passer';
+    updateNextLabel();
     document.getElementById('screen-quiz').style.display = 'none';
     document.getElementById('screen-results').style.display = 'block';
     showResults();
