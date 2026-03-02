@@ -1514,15 +1514,17 @@ function calcScore(candidateId) {
   THESES.forEach(t => {
     const ua = userAnswers[t.id];
     if (!ua || ua.vote === 'skip') return;
-    const cp = POSITIONS[candidateId]?.[t.id]?.stance;
-    if (!cp) return;
+    const cpEntry = POSITIONS[candidateId]?.[t.id];
+    if (!cpEntry?.stance) return;
+    const cp = cpEntry.stance;
 
     const weight = ua.double ? 2 : 1;
     maxScore += 2 * weight;
 
     if (ua.vote === cp) score += 2 * weight;
-    else if (ua.vote === 'neutral' || cp === 'neutral') score += 1 * weight;
-    // else: 0 points
+    else if (ua.vote === 'neutral') score += 1 * weight;
+    else if (cp === 'neutral' && !isUndocumented(cpEntry.excerpt)) score += 1 * weight;
+    // undocumented neutral + user non-neutral → 0 points
   });
 
   return maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;

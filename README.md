@@ -84,7 +84,8 @@ Chaque position (`D'accord` / `Neutre` / `Pas d'accord`) est :
 
 Pour chaque thèse répondue :
 - Accord avec le candidat → **2 points**
-- Position de l'un des deux côtés `Neutre` → **1 point**
+- Position de l'un des deux côtés `Neutre` (position modérée documentée) → **1 point**
+- Position non documentée du candidat (aucune source) → **0 point**
 - Désaccord → **0 point**
 
 Les thèses marquées "×2" comptent double. Le score final est le ratio entre les points obtenus et le maximum possible, exprimé en pourcentage.
