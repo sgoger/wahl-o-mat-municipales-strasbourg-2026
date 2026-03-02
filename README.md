@@ -75,7 +75,10 @@ Tout choix de thèses implique un cadrage. Certains sujets sont absents faute de
 Chaque position (`D'accord` / `Neutre` / `Pas d'accord`) est :
 - Tirée d'une source de presse indépendante citée dans l'outil
 - Accompagnée d'un extrait du programme ou d'une déclaration publique
-- Attribuée `Neutre` lorsqu'aucune position documentée n'a pu être trouvée
+
+`Neutre` peut avoir deux significations, distinguées dans l'outil :
+- **Position nuancée** : le candidat a exprimé une position intermédiaire ou équilibrée, documentée par une source
+- **Non documenté** : aucune déclaration sur le sujet n'a pu être trouvée dans les sources disponibles
 
 ### Calcul du score
 
@@ -90,7 +93,7 @@ Les thèses marquées "×2" comptent double. Le score final est le ratio entre l
 
 ## Données
 
-Les données (candidats, thèses, positions, sources) sont dans le fichier `wahlomat-data.js`. Elles sont volontairement séparées du code applicatif pour faciliter leur vérification et leur mise à jour.
+Les données (candidats, thèses, positions, sources) se trouvent dans le fichier `index.html`, dans les constantes `CANDIDATES`, `THESES` et `POSITIONS`. Elles sont accessibles directement dans le code source pour faciliter leur vérification.
 
 **Dernière mise à jour des données :** mars 2026
 
@@ -107,13 +110,21 @@ Une position incorrecte ? Une source expirée ? Un candidat absent qui devrait f
 ## Structure du projet
 
 ```
-wahlomat-strasbourg-2026.html   ← Application complète (autonome, fonctionne en local)
-wahlomat-data.js                ← Source des données éditables
-wahlomat.js                     ← Logique applicative
-wahlomat.css                    ← Styles
-README.md                       ← Ce fichier
-CONTRIBUTING.md                 ← Guide de contribution
-LICENSE                         ← Licence MIT
+index.html          ← Application complète (HTML, CSS, JS et données dans un seul fichier)
+README.md           ← Ce fichier
+CONTRIBUTING.md     ← Guide de contribution
+LICENSE             ← Licence MIT
+tests/              ← Tests automatisés (Vitest)
+  smoke.test.js
+  data-integrity.test.js
+  scoring.test.js
+  ranking.test.js
+  detail.test.js
+  comparison.test.js
+  auto-advance.test.js
+  helpers/load-app.js
+package.json        ← Dépendances de développement
+vitest.config.js    ← Configuration des tests
 ```
 
 ---
