@@ -187,6 +187,51 @@ describe('calcScore', () => {
   });
 
   // -----------------------------------------------------------
+  // calcUndocumentedImpact
+  // -----------------------------------------------------------
+  describe('calcUndocumentedImpact', () => {
+    test('returns 0 when no answers given', () => {
+      expect(app.calcUndocumentedImpact('jakubowicz')).toBe(0);
+    });
+
+    test('returns 0 when all answers are skip', () => {
+      app.THESES.forEach(t => {
+        app.userAnswers[t.id] = { vote: 'skip', double: false };
+      });
+      expect(app.calcUndocumentedImpact('jakubowicz')).toBe(0);
+    });
+
+    test('counts undocumented neutral when user voted non-neutral', () => {
+      // jakubowicz T5 is neutral and undocumented
+      app.userAnswers.T5 = { vote: 'agree', double: false };
+      expect(app.calcUndocumentedImpact('jakubowicz')).toBe(1);
+    });
+
+    test('counts undocumented neutral for both agree and disagree user votes', () => {
+      app.userAnswers.T5 = { vote: 'disagree', double: false };
+      expect(app.calcUndocumentedImpact('jakubowicz')).toBe(1);
+    });
+
+    test('does not count when user voted neutral on an undocumented thesis', () => {
+      // user neutral + candidate neutral = exact match, no penalty
+      app.userAnswers.T5 = { vote: 'neutral', double: false };
+      expect(app.calcUndocumentedImpact('jakubowicz')).toBe(0);
+    });
+
+    test('does not count documented neutral positions', () => {
+      // barseghian T9 is neutral but documented — not penalized
+      app.userAnswers.T9 = { vote: 'agree', double: false };
+      expect(app.calcUndocumentedImpact('barseghian')).toBe(0);
+    });
+
+    test('does not count when candidate position is non-neutral (agree/disagree)', () => {
+      // barseghian T1 is agree (not neutral) — never triggers the undocumented penalty
+      app.userAnswers.T1 = { vote: 'disagree', double: false };
+      expect(app.calcUndocumentedImpact('barseghian')).toBe(0);
+    });
+  });
+
+  // -----------------------------------------------------------
   // Regression tests with real data
   // -----------------------------------------------------------
   describe('regression with real data', () => {

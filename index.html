@@ -449,6 +449,7 @@
   }
   .cand-score-label { font-size: 11px; color: var(--gray); }
   .cand-doc-count { font-size: 10px; color: var(--gray); margin-top: 2px; }
+  .cand-undoc-warning { color: var(--neutral); cursor: help; }
 
   .score-bar-wrap {
     padding: 0 24px 20px;
@@ -548,6 +549,7 @@
   }
   .source-advocacy { background: #FFF3E0; color: #E65100; border: 1px solid #FFCC80; }
   .source-official { background: #E3F2FD; color: #1565C0; border: 1px solid #90CAF9; }
+  .source-zeroed { background: #F5F5F5; color: #757575; border: 1px solid #BDBDBD; }
 
   .toggle-detail {
     font-size: 12px;
@@ -1679,6 +1681,21 @@ function calcDocumentedCount(candidateId) {
   return count;
 }
 
+// Returns the number of theses answered non-neutrally by the user where
+// the candidate has an undocumented neutral position (scored 0 instead of
+// a potential 1 point — penalized due to lack of press coverage).
+function calcUndocumentedImpact(candidateId) {
+  let penalized = 0;
+  THESES.forEach(t => {
+    const ua = userAnswers[t.id];
+    if (!ua || ua.vote === 'skip' || ua.vote === 'neutral') return;
+    const cp = POSITIONS[candidateId]?.[t.id];
+    if (!cp?.stance) return;
+    if (cp.stance === 'neutral' && isUndocumented(cp.excerpt)) penalized++;
+  });
+  return penalized;
+}
+
 // =============================================
 // RESULTS
 // =============================================
@@ -1689,7 +1706,8 @@ function showResults() {
   const scores = CANDIDATES.map(c => ({
     ...c,
     score: calcScore(c.id),
-    documentedCount: calcDocumentedCount(c.id)
+    documentedCount: calcDocumentedCount(c.id),
+    undocumentedImpact: calcUndocumentedImpact(c.id)
   })).sort((a, b) => b.score - a.score);
 
   const list = document.getElementById('results-list');
@@ -1698,6 +1716,10 @@ function showResults() {
   scores.forEach((c, i) => {
     const div = document.createElement('div');
     div.className = 'candidate-result' + (i === 0 ? ' top-1' : '');
+    const n = c.undocumentedImpact;
+    const undocHtml = n > 0
+      ? ` · <span class="cand-undoc-warning" title="${n > 1 ? `Ces ${n} thèses ont` : 'Cette thèse a'} compté 0 point faute de source">${n} non sourcée${n > 1 ? 's' : ''} ⚠</span>`
+      : '';
     div.innerHTML = `
       <div class="cand-header" onclick="toggleDetail('detail-${c.id}', this)">
         <div class="cand-rank" style="background:${i===0?'var(--gold)':c.color}">${i+1}</div>
@@ -1708,7 +1730,7 @@ function showResults() {
         <div class="cand-score-wrap">
           <div class="cand-score-pct" style="color:${c.color}">${c.score}%</div>
           <div class="cand-score-label">de concordance</div>
-          <div class="cand-doc-count">${c.documentedCount}/33 documentées</div>
+          <div class="cand-doc-count">${c.documentedCount}/33 sourcées${undocHtml}</div>
         </div>
         <button class="toggle-detail" id="toggle-${c.id}">Positions</button>
       </div>
@@ -1780,7 +1802,7 @@ function buildDetailHTML(candidate) {
           </div>
         </div>
         <div class="pos-source">
-          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>${ADVOCACY_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-advocacy">média militant</span>' : ''}${OFFICIAL_CANDIDATE_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-official">source officielle</span>' : ''}
+          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>${ADVOCACY_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-advocacy">média militant</span>' : ''}${OFFICIAL_CANDIDATE_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-official">source officielle</span>' : ''}${undoc && ua.vote !== 'neutral' ? ' <span class="source-badge source-zeroed">0 pt</span>' : ''}
         </div>
       </div>
     `;
