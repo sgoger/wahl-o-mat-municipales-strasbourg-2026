@@ -448,6 +448,7 @@
     font-weight: 700;
   }
   .cand-score-label { font-size: 11px; color: var(--gray); }
+  .cand-doc-count { font-size: 10px; color: var(--gray); margin-top: 2px; }
 
   .score-bar-wrap {
     padding: 0 24px 20px;
@@ -1548,6 +1549,16 @@ function calcScore(candidateId) {
   return maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
 }
 
+function calcDocumentedCount(candidateId) {
+  let count = 0;
+  THESES.forEach(t => {
+    const cp = POSITIONS[candidateId]?.[t.id];
+    if (!cp?.stance) return;
+    if (cp.stance !== 'neutral' || !isUndocumented(cp.excerpt)) count++;
+  });
+  return count;
+}
+
 // =============================================
 // RESULTS
 // =============================================
@@ -1557,7 +1568,8 @@ function showResults() {
 
   const scores = CANDIDATES.map(c => ({
     ...c,
-    score: calcScore(c.id)
+    score: calcScore(c.id),
+    documentedCount: calcDocumentedCount(c.id)
   })).sort((a, b) => b.score - a.score);
 
   const list = document.getElementById('results-list');
@@ -1576,6 +1588,7 @@ function showResults() {
         <div class="cand-score-wrap">
           <div class="cand-score-pct" style="color:${c.color}">${c.score}%</div>
           <div class="cand-score-label">de concordance</div>
+          <div class="cand-doc-count">${c.documentedCount}/33 documentées</div>
         </div>
         <button class="toggle-detail" id="toggle-${c.id}">Positions</button>
       </div>

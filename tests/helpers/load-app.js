@@ -34,7 +34,7 @@ export function loadApp() {
     return {
       CANDIDATES, THESES, POSITIONS,
       userAnswers, selectedCandidates,
-      calcScore, buildDetailHTML, buildComparisonTable,
+      calcScore, calcDocumentedCount, isUndocumented, buildDetailHTML, buildComparisonTable,
       buildCompCheckboxes, buildReviewList, renderQuestion,
       castVote, startQuiz, nextQuestion, prevQuestion,
       toggleDoubleWeight, editQuestion, updateNextLabel,

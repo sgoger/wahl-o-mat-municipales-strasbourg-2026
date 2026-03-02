@@ -1,6 +1,7 @@
 import { describe, test, expect, beforeAll, beforeEach } from 'vitest';
 import { loadApp, resetState } from './helpers/load-app.js';
 
+
 describe('buildDetailHTML', () => {
   let app;
 
@@ -180,6 +181,47 @@ describe('buildDetailHTML', () => {
     test('returns valid HTML container even with no answers', () => {
       const html = app.buildDetailHTML(getBarseghian());
       expect(html).toContain('candidate-positions');
+    });
+  });
+});
+
+describe('calcDocumentedCount', () => {
+  let app;
+
+  beforeAll(() => {
+    app = loadApp();
+  });
+
+  test('returns a number between 0 and 33 for each candidate', () => {
+    app.CANDIDATES.forEach(c => {
+      const count = app.calcDocumentedCount(c.id);
+      expect(count).toBeGreaterThanOrEqual(0);
+      expect(count).toBeLessThanOrEqual(33);
+    });
+  });
+
+  test('returns 33 for candidates with all positions documented', () => {
+    // Barseghian has well-documented positions; verify count is high
+    const count = app.calcDocumentedCount('barseghian');
+    expect(count).toBeGreaterThanOrEqual(25);
+  });
+
+  test('counts undocumented neutrals as 0', () => {
+    // Jakubowicz has many neutral positions; count should reflect undocumented ones
+    const count = app.calcDocumentedCount('jakubowicz');
+    // He has 21 neutrals, some of which are undocumented, so count < 33
+    expect(count).toBeLessThan(33);
+  });
+
+  test('agree and disagree positions always count as documented', () => {
+    // All agree/disagree positions should be counted regardless of excerpt
+    app.CANDIDATES.forEach(c => {
+      const agreeDisagreeCount = app.THESES.filter(t => {
+        const pos = app.POSITIONS[c.id]?.[t.id];
+        return pos?.stance === 'agree' || pos?.stance === 'disagree';
+      }).length;
+      const docCount = app.calcDocumentedCount(c.id);
+      expect(docCount).toBeGreaterThanOrEqual(agreeDisagreeCount);
     });
   });
 });
