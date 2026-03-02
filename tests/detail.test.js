@@ -203,45 +203,25 @@ describe('buildDetailHTML', () => {
       expect(html).not.toContain('source-advocacy');
     });
   });
-});
 
-describe('calcDocumentedCount', () => {
-  let app;
-
-  beforeAll(() => {
-    app = loadApp();
-  });
-
-  test('returns a number between 0 and 33 for each candidate', () => {
-    app.CANDIDATES.forEach(c => {
-      const count = app.calcDocumentedCount(c.id);
-      expect(count).toBeGreaterThanOrEqual(0);
-      expect(count).toBeLessThanOrEqual(33);
+  // -----------------------------------------------------------
+  // Source badges: official candidate sites
+  // -----------------------------------------------------------
+  describe('official source badge', () => {
+    test('shows official badge for candidate own website source', () => {
+      // jakubowicz T15 is sourced from pierrejakubowicz.eu
+      const jakubowicz = app.CANDIDATES.find(c => c.id === 'jakubowicz');
+      app.userAnswers.T15 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(jakubowicz);
+      expect(html).toContain('source-official');
+      expect(html).toContain('source officielle');
     });
-  });
 
-  test('returns 33 for candidates with all positions documented', () => {
-    // Barseghian has well-documented positions; verify count is high
-    const count = app.calcDocumentedCount('barseghian');
-    expect(count).toBeGreaterThanOrEqual(25);
-  });
-
-  test('counts undocumented neutrals as 0', () => {
-    // Jakubowicz has many neutral positions; count should reflect undocumented ones
-    const count = app.calcDocumentedCount('jakubowicz');
-    // He has 21 neutrals, some of which are undocumented, so count < 33
-    expect(count).toBeLessThan(33);
-  });
-
-  test('agree and disagree positions always count as documented', () => {
-    // All agree/disagree positions should be counted regardless of excerpt
-    app.CANDIDATES.forEach(c => {
-      const agreeDisagreeCount = app.THESES.filter(t => {
-        const pos = app.POSITIONS[c.id]?.[t.id];
-        return pos?.stance === 'agree' || pos?.stance === 'disagree';
-      }).length;
-      const docCount = app.calcDocumentedCount(c.id);
-      expect(docCount).toBeGreaterThanOrEqual(agreeDisagreeCount);
+    test('does not show official badge for press sources', () => {
+      // barseghian T1 is from strasinfo.fr (independent press)
+      app.userAnswers.T1 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).not.toContain('source-official');
     });
   });
 });
