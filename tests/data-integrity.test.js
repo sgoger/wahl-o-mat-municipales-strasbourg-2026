@@ -157,5 +157,19 @@ describe('data integrity', () => {
           .toBeGreaterThanOrEqual(15);
       });
     });
+
+    test('no position url points to a listing or tag page', () => {
+      const listingPatterns = [/\/tag\//, /\/tags\//, /\/category\//, /\/categorie\//, /\/author\//, /\/auteur\//, /\/page\/\d+/];
+      Object.entries(POSITIONS).forEach(([candidateId, positions]) => {
+        Object.entries(positions).forEach(([thesisId, pos]) => {
+          listingPatterns.forEach(pattern => {
+            expect(
+              pattern.test(pos.url),
+              `${candidateId}.${thesisId} url looks like a listing page: ${pos.url}`
+            ).toBe(false);
+          });
+        });
+      });
+    });
   });
 });
