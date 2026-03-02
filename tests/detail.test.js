@@ -183,6 +183,26 @@ describe('buildDetailHTML', () => {
       expect(html).toContain('candidate-positions');
     });
   });
+
+  // -----------------------------------------------------------
+  // Source badges: advocacy media
+  // -----------------------------------------------------------
+  describe('advocacy source badge', () => {
+    test('shows advocacy badge for vert.eco source', () => {
+      // barseghian T16 is sourced from vert.eco
+      app.userAnswers.T16 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).toContain('source-advocacy');
+      expect(html).toContain('média militant');
+    });
+
+    test('does not show advocacy badge for non-advocacy sources', () => {
+      // barseghian T1 is from strasinfo.fr, not an advocacy domain
+      app.userAnswers.T1 = { vote: 'agree', double: false };
+      const html = app.buildDetailHTML(getBarseghian());
+      expect(html).not.toContain('source-advocacy');
+    });
+  });
 });
 
 describe('calcDocumentedCount', () => {
