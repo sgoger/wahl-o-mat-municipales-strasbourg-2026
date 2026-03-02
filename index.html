@@ -547,6 +547,7 @@
     margin-left: 4px;
   }
   .source-advocacy { background: #FFF3E0; color: #E65100; border: 1px solid #FFCC80; }
+  .source-official { background: #E3F2FD; color: #1565C0; border: 1px solid #90CAF9; }
 
   .toggle-detail {
     font-size: 12px;
@@ -1538,6 +1539,8 @@ function prevQuestion() {
 
 // Domains of media with explicit editorial advocacy (not neutral press)
 const ADVOCACY_DOMAINS = ['vert.eco'];
+// Official candidate website domains (not independent press)
+const OFFICIAL_CANDIDATE_DOMAINS = ['pierrejakubowicz.eu'];
 
 // =============================================
 // SCORE CALCULATION
@@ -1675,7 +1678,7 @@ function buildDetailHTML(candidate) {
           </div>
         </div>
         <div class="pos-source">
-          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>${ADVOCACY_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-advocacy">média militant</span>' : ''}
+          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>${ADVOCACY_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-advocacy">média militant</span>' : ''}${OFFICIAL_CANDIDATE_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-official">source officielle</span>' : ''}
         </div>
       </div>
     `;
