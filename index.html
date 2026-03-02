@@ -534,6 +534,18 @@
     text-decoration: none;
   }
   .pos-source a:hover { text-decoration: underline; }
+  .source-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .source-advocacy { background: #FFF3E0; color: #E65100; border: 1px solid #FFCC80; }
 
   .toggle-detail {
     font-size: 12px;
@@ -1523,6 +1535,9 @@ function prevQuestion() {
   }
 }
 
+// Domains of media with explicit editorial advocacy (not neutral press)
+const ADVOCACY_DOMAINS = ['vert.eco'];
+
 // =============================================
 // SCORE CALCULATION
 // =============================================
@@ -1647,7 +1662,7 @@ function buildDetailHTML(candidate) {
           </div>
         </div>
         <div class="pos-source">
-          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>
+          ${cp.excerpt} — <a href="${cp.url}" target="_blank" rel="noopener">Source ↗</a>${ADVOCACY_DOMAINS.some(d => cp.url.includes(d)) ? ' <span class="source-badge source-advocacy">média militant</span>' : ''}
         </div>
       </div>
     `;
