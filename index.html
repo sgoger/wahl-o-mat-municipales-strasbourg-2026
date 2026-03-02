@@ -1409,7 +1409,7 @@ function startQuiz() {
 function renderQuestion() {
   const q = THESES[currentIndex];
   document.getElementById('question-theme').textContent = q.category;
-  document.getElementById('question-number').textContent = q.label;
+  document.getElementById('question-number').textContent = `${q.label} / ${THESES.length}`;
   document.getElementById('question-text').textContent = q.text;
 
   // Documentation links
