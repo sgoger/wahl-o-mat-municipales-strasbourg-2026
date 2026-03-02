@@ -94,6 +94,29 @@ describe('calcScore', () => {
   });
 
   // -----------------------------------------------------------
+  // Undocumented neutral
+  // -----------------------------------------------------------
+  describe('undocumented neutral', () => {
+    test('candidate undocumented neutral + user agree scores 0%', () => {
+      // jakubowicz T5 is neutral and undocumented ("Pas de position documentée sur les transports 24h/24")
+      app.userAnswers.T5 = { vote: 'agree', double: false };
+      expect(app.calcScore('jakubowicz')).toBe(0);
+    });
+
+    test('candidate undocumented neutral + user disagree scores 0%', () => {
+      // jakubowicz T5 is neutral and undocumented
+      app.userAnswers.T5 = { vote: 'disagree', double: false };
+      expect(app.calcScore('jakubowicz')).toBe(0);
+    });
+
+    test('candidate documented neutral + user agree still scores 50%', () => {
+      // barseghian T9 is neutral but documented ("Dispositif Mieux relouer mon logement vacant...")
+      app.userAnswers.T9 = { vote: 'agree', double: false };
+      expect(app.calcScore('barseghian')).toBe(50);
+    });
+  });
+
+  // -----------------------------------------------------------
   // Double weight
   // -----------------------------------------------------------
   describe('double weight', () => {

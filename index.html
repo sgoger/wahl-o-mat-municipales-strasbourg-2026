@@ -523,6 +523,7 @@
   .pos-agree { background: var(--agree); color: white; }
   .pos-neutral { background: var(--neutral); color: white; }
   .pos-disagree { background: var(--disagree); color: white; }
+  .pos-undocumented { background: #9E9E9E; color: white; }
   .pos-source {
     grid-column: 1 / -1;
     font-size: 11px;
@@ -917,7 +918,7 @@ const THESES = [
   },
   {
     id: 'T3', category: '🚋 Mobilité', label: 'Thèse 3',
-    text: 'La place de la voiture en centre-ville doit être davantage réduite au profit des piétons et des cyclistes.',
+    text: 'La place de la voiture en centre-ville doit être réduite au profit des piétons et des cyclistes.',
     docs: [
       { title: 'Place de la voiture en ville : enjeux et débats — Vert.eco', url: 'https://vert.eco/articles/a-strasbourg-des-citoyens-tires-au-sort-ont-planche-sur-le-projet-de-nouvelle-ligne-de-tram-et-refusent-de-reduire-la-place-de-la-voiture' },
       { title: 'Barseghian : mobilités et 30 km/h — France Bleu', url: 'https://www.francebleu.fr/infos/transports/le-nouveau-tram-nord-entre-strasbourg-schiltigheim-passera-rue-du-general-de-gaulle-1638549345' }
@@ -968,7 +969,7 @@ const THESES = [
     id: 'T9', category: '🏠 Logement', label: 'Thèse 9',
     text: 'La ville doit avoir la capacité de réquisitionner des logements vacants.',
     docs: [
-      { title: 'Logements vacants et réquisition en France : contexte juridique — Wikipedia', url: 'https://fr.wikipedia.org/wiki/%C3%89lections_municipales_de_2026_%C3%A0_Strasbourg' }
+      { title: 'À Strasbourg, 3 558 logements vacants : que faire ? — Pokaa', url: 'https://pokaa.fr/2026/02/18/cest-la-galere-pour-se-loger-a-strasbourg-que-faire-avec-3558-logements-vacants/' }
     ]
   },
   {
@@ -999,7 +1000,7 @@ const THESES = [
   },
   {
     id: 'T13', category: '🔒 Sécurité', label: 'Thèse 13',
-    text: 'La lutte contre les incivilités doit reposer principalement sur des sanctions renforcées plutôt que sur la prévention.',
+    text: 'Les sanctions contre les incivilités doivent être significativement renforcées.',
     docs: [
       { title: 'Propreté et incivilités dans la campagne 2026 — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
@@ -1014,10 +1015,10 @@ const THESES = [
   },
   {
     id: 'T15', category: '🔒 Sécurité', label: 'Thèse 15',
-    text: 'L\'éclairage public doit être rétabli la nuit dans toutes les rues de Strasbourg.',
+    text: 'L\'éclairage public doit fonctionner toute la nuit dans l\'ensemble des rues de Strasbourg.',
     docs: [
       { title: 'Sécurité : programmes des candidats — Pokaa', url: 'https://pokaa.fr/2026/02/01/securite-a-strasbourg-quels-programmes-ont-les-candidates-aux-municipales-2026/' },
-      { title: 'Jakubowicz : rallumer la lumière dans toutes les rues — pierrejakubowicz.eu', url: 'https://pierrejakubowicz.eu/post_idea/rallumer-la-lumiere-dans-lensemble-des-rues-de-strasbourg/' }
+      { title: 'Éclairage nocturne à Strasbourg : test dans 3 quartiers — Pokaa', url: 'https://pokaa.fr/2026/01/17/securite-renforcee-strasbourg-teste-un-nouvel-eclairage-nocturne-dans-3-quartiers/' }
     ]
   },
   // FINANCES
@@ -1026,20 +1027,20 @@ const THESES = [
     text: 'La ville doit mener un audit indépendant de ses finances et réduire sa dette sans augmenter les impôts.',
     docs: [
       { title: 'Finances de Strasbourg : enjeux du mandat — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
-      { title: 'Jakubowicz sur les finances — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'La dette de Strasbourg a doublé en six ans — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/bilan-finances-strasbourg-jeanne-barseghian-368478' }
     ]
   },
   {
     id: 'T17', category: '💰 Finances', label: 'Thèse 17',
     text: 'La taxe foncière ne doit pas augmenter durant le prochain mandat.',
     docs: [
-      { title: 'Taxe foncière et finances municipales — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'Taxe foncière en Alsace : +48,9 % en 10 ans — France 3 Grand Est', url: 'https://france3-regions.franceinfo.fr/grand-est/alsace/48-9-de-hausse-moyenne-de-la-taxe-fonciere-en-10-ans-en-alsace-decouvrez-son-augmentation-dans-votre-commune-3233807.html' }
     ]
   },
   // ÉCOLOGIE
   {
     id: 'T18', category: '🌿 Écologie', label: 'Thèse 18',
-    text: 'La transition écologique doit rester un axe prioritaire de la politique municipale.',
+    text: 'La transition écologique doit être un axe prioritaire de la politique municipale.',
     docs: [
       { title: 'Bilan écologique du mandat Barseghian — Vert.eco', url: 'https://vert.eco/articles/municipales-2026-a-strasbourg-logement-stationnement-et-tram-nord-au-coeur-dune-campagne-chahutee-pour-la-maire-ecolo' },
       { title: 'Mesures écologie des candidats — Pokaa FACTU', url: 'https://pokaa.fr/2026/02/11/ecologie-a-strasbourg-quelles-sont-les-mesures-des-candidates-aux-municipales-2026/' }
@@ -1074,14 +1075,14 @@ const THESES = [
     id: 'T22', category: '📜 Démocratie', label: 'Thèse 22',
     text: 'Les élus de quartier doivent disposer d\'un budget propre et de délégations renforcées.',
     docs: [
-      { title: 'Démocratie participative : bilan du mandat et propositions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'Le programme UTILES né dans les quartiers promet de tout changer — StrasInfo', url: 'https://strasinfo.fr/2026/02/23/municipales-2026-a-strasbourg-le-programme-utiles-ne-dans-les-quartiers-promet-de-tout-changer/' }
     ]
   },
   {
     id: 'T23', category: '📜 Démocratie', label: 'Thèse 23',
     text: 'Les citoyens doivent pouvoir déclencher un référendum municipal par voie de pétition.',
     docs: [
-      { title: 'Démocratie locale et référendum : propositions des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'Expérimentons le référendum local d\'initiative partagée à Strasbourg — StrasInfo', url: 'https://strasinfo.fr/2025/05/14/municipales-2026-experimentons-le-referendum-local-dinitiative-partagee-la-tribune-detienne-loos-bruno-studer-et-fabienne-keller/' }
     ]
   },
   {
@@ -1096,8 +1097,8 @@ const THESES = [
     id: 'T25', category: '📜 Démocratie', label: 'Thèse 25',
     text: 'La ville doit créer des mairies de quartier dotées de services propres et d\'horaires élargis.',
     docs: [
-      { title: 'Jakubowicz : décentralisation des services — pierrejakubowicz.eu', url: 'https://pierrejakubowicz.eu/post_idea/creer-10-mairies-de-quartier/' },
-      { title: 'Candidats et démocratie locale — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'Mairies de quartier : propositions des candidats strasbourgeois — Pokaa', url: 'https://pokaa.fr/2026/01/18/surtension-a-strasbourg-qui-sont-les-15-candidates-aux-municipales-2026/' },
+      { title: 'Le programme UTILES né dans les quartiers promet de tout changer — StrasInfo', url: 'https://strasinfo.fr/2026/02/23/municipales-2026-a-strasbourg-le-programme-utiles-ne-dans-les-quartiers-promet-de-tout-changer/' }
     ]
   },
   // TOURISME
@@ -1105,7 +1106,7 @@ const THESES = [
     id: 'T26', category: '🌍 Tourisme', label: 'Thèse 26',
     text: 'La ville doit mieux réguler le tourisme de masse pour préserver la qualité de vie des habitants.',
     docs: [
-      { title: 'Marché de Noël et tourisme à Strasbourg : enjeux — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' },
+      { title: 'Strasbourg en 2032 : quelles visions ont les candidats ? — Pokaa', url: 'https://pokaa.fr/2026/02/25/strasbourg-en-2032-quelles-visions-ont-les-candidates-aux-municipales-2026/' },
       { title: 'Tourisme de masse : les propositions des candidats — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/candidats-mairie-strasbourg-2026-366170' }
     ]
   },
@@ -1113,7 +1114,7 @@ const THESES = [
     id: 'T27', category: '🌍 Tourisme', label: 'Thèse 27',
     text: 'Strasbourg doit renforcer son rôle de capitale européenne avec des événements dédiés.',
     docs: [
-      { title: 'Strasbourg capitale européenne : enjeux et ambitions — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' }
+      { title: 'Strasbourg en 2032 : quelles visions ont les candidats ? — Pokaa', url: 'https://pokaa.fr/2026/02/25/strasbourg-en-2032-quelles-visions-ont-les-candidates-aux-municipales-2026/' }
     ]
   },
   // URBANISME
@@ -1130,7 +1131,7 @@ const THESES = [
     id: 'T29', category: '💼 Économie', label: 'Thèse 29',
     text: 'La ville doit créer un guichet unique pour simplifier les démarches des entreprises et commerces.',
     docs: [
-      { title: 'Jakubowicz : programme économique — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/tag/elections-municipales-2026' },
+      { title: 'Jakubowicz promet de ne pas augmenter les impôts — Rue89 Strasbourg', url: 'https://www.rue89strasbourg.com/pierre-jakubowicz-promet-de-ne-pas-augmenter-les-impots-380954/' },
       { title: 'Vetter veut tout changer — StrasInfo', url: 'https://strasinfo.fr/2026/02/25/municipales-2026-a-strasbourg-vetter-veut-tout-changer' }
     ]
   },
@@ -1513,15 +1514,17 @@ function calcScore(candidateId) {
   THESES.forEach(t => {
     const ua = userAnswers[t.id];
     if (!ua || ua.vote === 'skip') return;
-    const cp = POSITIONS[candidateId]?.[t.id]?.stance;
-    if (!cp) return;
+    const cpEntry = POSITIONS[candidateId]?.[t.id];
+    if (!cpEntry?.stance) return;
+    const cp = cpEntry.stance;
 
     const weight = ua.double ? 2 : 1;
     maxScore += 2 * weight;
 
     if (ua.vote === cp) score += 2 * weight;
-    else if (ua.vote === 'neutral' || cp === 'neutral') score += 1 * weight;
-    // else: 0 points
+    else if (ua.vote === 'neutral') score += 1 * weight;
+    else if (cp === 'neutral' && !isUndocumented(cpEntry.excerpt)) score += 1 * weight;
+    // undocumented neutral + user non-neutral → 0 points
   });
 
   return maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
@@ -1579,6 +1582,18 @@ function showResults() {
   buildCompCheckboxes(scores);
 }
 
+function isUndocumented(excerpt) {
+  if (!excerpt) return true;
+  const markers = [
+    'Pas de position documentée', 'Pas de position explicite',
+    'Position non documentée', 'position non explicitement',
+    'Pas de mention ', 'Pas de proposition', 'Pas d\'engagement explicite',
+    'Pas de plan ', 'Pas de reprise', 'sans engagement ferme',
+    'non chiffré', 'Pas de mutuelle', 'Pas de revenu',
+  ];
+  return markers.some(m => excerpt.includes(m));
+}
+
 function buildDetailHTML(candidate) {
   let html = '<div class="candidate-positions">';
   const stanceLabels = { agree: "D'accord", neutral: 'Neutre', disagree: "Pas d'accord" };
@@ -1592,7 +1607,9 @@ function buildDetailHTML(candidate) {
     const rowClass = match ? 'match' : (ua.vote !== 'neutral' && cp.stance !== 'neutral' ? 'mismatch' : '');
 
     const userLabel = stanceLabels[ua.vote] || '?';
-    const candLabel = stanceLabels[cp.stance] || '?';
+    const undoc = cp.stance === 'neutral' && isUndocumented(cp.excerpt);
+    const candLabel = undoc ? 'Non documenté' : (stanceLabels[cp.stance] || '?');
+    const candBadgeClass = undoc ? 'pos-undocumented' : `pos-${cp.stance}`;
 
     html += `
       <div class="position-row ${rowClass}">
@@ -1608,7 +1625,7 @@ function buildDetailHTML(candidate) {
           </div>
           <div class="pos-stance-item">
             <span class="pos-stance-label">${candidate.name.split(' ').pop()}</span>
-            <span class="pos-stance-badge pos-${cp.stance}">${candLabel}</span>
+            <span class="pos-stance-badge ${candBadgeClass}">${candLabel}</span>
           </div>
         </div>
         <div class="pos-source">
@@ -1672,9 +1689,11 @@ function buildComparisonTable() {
     else if (uv === 'disagree') html += '<td class="cell-disagree">✗</td>';
     else html += '<td class="cell-unknown">–</td>';
     cands.forEach(c => {
-      const pos = POSITIONS[c.id]?.[t.id]?.stance;
+      const entry = POSITIONS[c.id]?.[t.id];
+      const pos = entry?.stance;
       if (pos === 'agree') html += '<td class="cell-agree">✓</td>';
-      else if (pos === 'neutral') html += '<td class="cell-neutral">—</td>';
+      else if (pos === 'neutral' && !isUndocumented(entry?.excerpt)) html += '<td class="cell-neutral">—</td>';
+      else if (pos === 'neutral') html += '<td class="cell-unknown" title="Position non documentée">?</td>';
       else if (pos === 'disagree') html += '<td class="cell-disagree">✗</td>';
       else html += '<td class="cell-unknown">?</td>';
     });
