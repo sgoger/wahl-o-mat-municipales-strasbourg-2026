@@ -27,4 +27,18 @@ describe('smoke test', () => {
   test('calcScore returns 0 with no user answers', () => {
     expect(app.calcScore('barseghian')).toBe(0);
   });
+
+  test('methodology section exists in the DOM', () => {
+    const section = document.getElementById('methodology-section');
+    expect(section).not.toBeNull();
+  });
+
+  test('methodology toggle button exists in the DOM', () => {
+    const btn = document.getElementById('methodology-toggle-btn');
+    expect(btn).not.toBeNull();
+  });
+
+  test('toggleMethodology is a function', () => {
+    expect(typeof app.toggleMethodology).toBe('function');
+  });
 });

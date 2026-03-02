@@ -669,6 +669,17 @@
     margin: 0 auto;
   }
   .site-footer a { color: var(--red); text-decoration: none; }
+  .footer-methodology-btn {
+    background: none;
+    border: none;
+    color: var(--red);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+  }
+  .footer-methodology-btn:hover { text-decoration: underline; }
 
   /* TABS */
   .tab-bar {
@@ -694,6 +705,60 @@
     color: var(--red);
     border-bottom-color: var(--red);
   }
+
+  /* METHODOLOGY SECTION */
+  .methodology-section {
+    display: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    border-top: 2px solid var(--red);
+  }
+  .methodology-section.open { display: block; }
+  .methodology-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .methodology-section h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .methodology-section p, .methodology-section li {
+    font-size: 13px;
+    color: var(--gray-dark);
+    line-height: 1.6;
+  }
+  .methodology-section ul { padding-left: 1.2rem; margin-top: 6px; }
+  .methodology-section li { margin-bottom: 4px; }
+  .methodology-section .limit-box {
+    background: var(--neutral-bg);
+    border-left: 3px solid var(--neutral);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--gray-dark);
+  }
+  .source-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+  .source-table th { text-align: left; padding: 6px 8px; background: var(--gray-light); font-weight: 600; }
+  .source-table td { padding: 6px 8px; border-bottom: 1px solid var(--gray-light); vertical-align: top; }
+  .source-table .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .tag-press { background: #E8F5E9; color: #2E7D32; }
+  .tag-advocacy { background: #FFF3E0; color: #E65100; }
+  .tag-official { background: #E3F2FD; color: #1565C0; }
 
   @media (max-width: 600px) {
     .vote-buttons { grid-template-columns: 1fr; }
@@ -875,9 +940,46 @@
 
 </div>
 
+<section class="methodology-section" id="methodology-section" aria-label="Méthodologie">
+  <h2>Méthodologie</h2>
+
+  <h3>Comment les positions ont-elles été déterminées ?</h3>
+  <p>Chaque position (D'accord / Neutre / Pas d'accord) a été attribuée par un seul auteur à partir d'extraits de presse ou de programmes officiels. La grille d'interprétation appliquée :</p>
+  <ul>
+    <li><strong>D'accord</strong> : le candidat a exprimé un soutien explicite à la mesure dans une source vérifiable.</li>
+    <li><strong>Pas d'accord</strong> : le candidat a exprimé une opposition explicite, ou son programme propose une mesure contradictoire.</li>
+    <li><strong>Neutre (documenté)</strong> : le candidat a exprimé une position nuancée, ambivalente, ou conditionnelle.</li>
+    <li><strong>Neutre (non documenté)</strong> : aucune source n'a permis de déterminer la position. Vaut 0 point dans le calcul de score.</li>
+  </ul>
+  <div class="limit-box">⚠ Limite : cette interprétation n'a pas été soumise à une double vérification indépendante. Les positions peuvent être contestées — le lien vers la source originale est toujours affiché.</div>
+
+  <h3>Sources utilisées</h3>
+  <table class="source-table">
+    <thead><tr><th>Source</th><th>Nature</th><th>% des références</th></tr></thead>
+    <tbody>
+      <tr><td>strasinfo.fr</td><td><span class="tag tag-press">presse</span></td><td>~41 %</td></tr>
+      <tr><td>rue89strasbourg.com</td><td><span class="tag tag-press">presse</span></td><td>~24 %</td></tr>
+      <tr><td>pokaa.fr</td><td><span class="tag tag-press">presse</span></td><td>~16 %</td></tr>
+      <tr><td>vert.eco</td><td><span class="tag tag-advocacy">média militant</span> Média pro-écologie</td><td>~8 %</td></tr>
+      <tr><td>francebleu.fr / cnews.fr</td><td><span class="tag tag-press">presse</span></td><td>~10 %</td></tr>
+      <tr><td>pierrejakubowicz.eu</td><td><span class="tag tag-official">source officielle</span> Site officiel candidat</td><td>&lt;1 %</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Limites connues de cet outil</h3>
+  <ul>
+    <li><strong>Biais thématique des 33 thèses :</strong> les thèses reflètent les sujets les plus couverts par la presse pendant la campagne, ce qui crée un déséquilibre vers les thèmes progressistes (20/33 thèses). Voir la notice dans la page d'introduction.</li>
+    <li><strong>Couverture médiatique inégale :</strong> les candidats moins couverts par les sources retenues accumulent plus de positions "non documentées" (0 point), ce qui peut pénaliser leur score sans lien avec leur programme réel.</li>
+    <li><strong>Interprétation subjective :</strong> un seul auteur a catégorisé 198 positions. Des déclarations ambiguës peuvent être interprétées différemment selon le lecteur.</li>
+    <li><strong>Pas de recommandation de vote :</strong> cet outil est un outil de réflexion, pas un guide électoral.</li>
+  </ul>
+
+  <p style="margin-top:16px">Pour signaler une erreur ou contribuer : <a href="https://github.com/sgoger/wahl-o-mat-municipales-strasbourg-2026" target="_blank" rel="noopener noreferrer">Code source sur GitHub</a></p>
+</section>
+
 <footer class="site-footer">
   <p>Outil citoyen non-partisan · Données issues des programmes officiels et de la presse locale (Rue89 Strasbourg, Pokaa, StrasInfo, Vert.eco, France Bleu, CNews) · Mars 2026</p>
-  <p style="margin-top:6px">Pas de recommandation de vote · <a href="#" onclick="showSources()">Voir toutes les sources</a> · <a href="https://github.com/sgoger/wahl-o-mat-municipales-strasbourg-2026" target="_blank" rel="noopener noreferrer">Code source sur GitHub</a></p>
+  <p style="margin-top:6px">Pas de recommandation de vote · <a href="#" onclick="showSources()">Voir toutes les sources</a> · <button onclick="toggleMethodology()" class="footer-methodology-btn" id="methodology-toggle-btn">Méthodologie</button> · <a href="https://github.com/sgoger/wahl-o-mat-municipales-strasbourg-2026" target="_blank" rel="noopener noreferrer">Code source sur GitHub</a></p>
 </footer>
 
 <script>
@@ -1848,6 +1950,14 @@ function showSources() {
   const msg = 'Sources utilisées :\n\n' + sources.join('\n');
   alert(msg);
   return false;
+}
+
+function toggleMethodology() {
+  const section = document.getElementById('methodology-section');
+  const btn = document.getElementById('methodology-toggle-btn');
+  const isOpen = section.classList.toggle('open');
+  btn.textContent = isOpen ? 'Fermer la méthodologie' : 'Méthodologie';
+  if (isOpen) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
 </body>

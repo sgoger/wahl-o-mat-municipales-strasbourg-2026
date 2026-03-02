@@ -38,7 +38,7 @@ export function loadApp() {
       buildCompCheckboxes, buildReviewList, renderQuestion,
       castVote, startQuiz, nextQuestion, prevQuestion,
       toggleDoubleWeight, editQuestion, updateNextLabel,
-      restartQuiz, showResults, showTab, showSources,
+      restartQuiz, showResults, showTab, showSources, toggleMethodology,
       toggleDetail, toggleReview,
       get currentIndex() { return currentIndex; },
       set currentIndex(v) { currentIndex = v; },
